@@ -1,0 +1,340 @@
+---
+title: "Hands-on with R and OpenM++ for Microsimulation"
+subtitle: "9th World Congress of the International Microsimulation Association (IMA)"
+author: "Matt Warkentin, PhD (<matthew.warkentin@ucalgary.ca>)"
+date: 2024-01-08
+format: 
+  revealjs:
+    logo: UC-vert-rgb.png
+    theme: [default, custom.scss]
+    title-slide-attributes: 
+      data-background-color: '#ffcd00'
+execute: 
+  echo: true
+  warning: false
+  error: false
+---
+
+```{r setup, includes=FALSE, echo=FALSE}
+library(tidyverse)
+library(glue)
+library(here)
+library(fontawesome)
+library(htmltools)
+```
+
+## Who am I?
+
+- __Name:__ Matt Warkentin
+
+- __Hometown:__ Port Dalhousie, Ontario, Canada
+
+- __Living:__ Calgary, Alberta, Canada
+
+- __Education:__
+    + BSc, Medical Sciences, Brock University
+    + MSc, Epidemiology, Brock University
+    + PhD, Molecular Epidemiology, University of Toronto
+    + Postdoc, Dept. of Oncology, University of Calgary
+
+## `r fa('broom')` Housekeeping
+
+- Active workshop participants should have been provided a __user name__ and __login__ to connect to the cloud instance of OpenM++
+    + Please come see me if you don't yet have this information
+
+- Passive participants, please feel free to ask questions and interact with the workshop team
+
+- Ask questions!
+
+## `r fa('list-check')` Agenda
+
+1. Brief history of OpenM++
+
+2. Introduction to the OpenM++ API
+
+3. Wrapping an API in R
+
+4. Introduction to `oncosimx`
+
+5. Hands-on examples
+
+6. Concluding remarks
+
+## What is OpenM++
+
+> OpenM++ is an open source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop simple or complex models.
+
+- Primarily written in C and C++
+
+- Can install and run on Mac, Windows, and Linux
+
+- Heir apparent to Modgen
+    + The OpenM++ language is based on the Modgen language developed at Statistics Canada. With minor modifications to model source code...
+
+## Why OpenM++: General features
+
+- open source: OpenM++ and all components are licensed under the very broad MIT license.
+
+- cross-platform: Model development and use on Windows, Linux, or MacOS.
+
+- standards-based: Uses industry standard formats and technologies.
+
+- zero-footprint: File-based installation requires no elevation of privileges.
+
+## Why OpenM++: Model developer features
+
+- high-level language: Model types, parameters, entities, events, tables, etc. are specified using a compact domain-specific language targeted to microsimulation.
+
+- scalable complexity: From simple 'toy' models to highly complex models.
+
+- modularity: New events and processes can be added to a model in a new module, often with little or no modification to existing modules.
+continuous or discrete time, or a mixture.
+
+- supports multiple versions: Multiple OpenM++ versions can be installed and a single environment variable used to choose among them.
+
+- result compare: Supports rapid comparison of all model outputs during incremental model development.
+
+## Why OpenM++: Computational features
+
+- scalable computation: Designed to scale linearly with population size or replicates when possible, N log N scaling for typical interacting populations.
+
+- grid-enabled, cloud-enabled: Supports MPI for multi-processing to distribute execution of replicates to a small or large computational grid or to the cloud, with automatic result assembly.
+
+- multi-threaded: Supports multi-threading for parallel execution of replicates on desktop or server.
+
+- on-the-fly tabulation: Tables are computed during the simulation, eliminating the need to output voluminous microdata for subsequent tabulation.
+
+- computationally efficient: The model specification is transformed to C++ which is processed by an optimizing C++ compiler to produce a highly efficient executable program.
+
+## Why OpenM++: Usability features
+
+- generated UI: A model-specific UI is generated from the model specification.
+
+- browser-based UI: The UI requires only a browser, and runs on almost any modern browser.
+
+- cloud-enabled: Models can be deployed to a cloud and accessed remotely over the web, from a browser.
+
+- multilingual support: For UI and for model, with real-time language switching
+
+## Why OpenM++: Analyst features
+
+- continuous time tabulation: Powerful but easy to use language constructs to tabulate time-in-state, empirical hazards, transitions counts, state changes, etc.
+
+- replicate support: All tables can have underlying replicate simulations to assess the uncertainty of any cell of any output table. Statistical measures of uncertainty are computed for all cells of all tables.
+
+- automation: Models can be controlled by scripts, eg Python or R.
+
+- import/export: Models and runs can be moved between databases, or to standard formats for upstream preparation of inputs or for downstream analysis of outputs.
+
+- dynamic run control: A computational grid can process runs dynamically to enable whole-model estimation or calibration, with a controlling script reading run results and preparing new runs for execution.
+
+## OpenM++: Workshop focus
+
+- This workshop will primarily focus on the "analysts" perspective for what the benefits are of using OpenM++
+
+> Automation: Models can be controlled by scripts, e.g., Python or R.
+
+- How? Why?
+
+## OpenM++ API
+
+> The model API provides programmatic access to scenario management, model inputs, model runs, and model outputs. It is implemented by the OpenM++ oms web service, which uses standard JSON to communicate with a controlling application.
+
+- [API Documentation](https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API)
+
+## What is an API?
+
+- Stands for "Application Programming Interface"
+    + Is that helpful?
+    
+- In simple terms, it is a software for allowing two applications to _"talk"_ to each other
+
+- The communication occurs using a well-defined and structured language
+
+- Most modern API conform to "REST" standards (i.e., a RESTful API)
+
+## What is a RESTful API?
+
+- A versatile interface for sending and retrieving data through HTTP requests in JSON or other formats (e.g., XML, CSV, plain-text)
+
+- REST (Representational State Transfer) APIs represent an example of these interfaces since they use the principles underpinning the REST architectural design when communicating between clients and servers. 
+
+- This design includes predefined sets of different operations parameters available via standard HTTP methods such as GET, POST, PUT or DELETE while allowing scalability.
+
+## RESTful API request methods
+
+- There are five popular kinds of API request methods: GET, POST, PUT, PATCH, and DELETE
+
+- __GET:__ retrieves information or data from a specified resource
+
+- __POST:__ submits data to be processed to a specified resource
+
+- __PUT:__ updates a specified resource with new data
+
+- __DELETE:__ deletes a specified resource
+
+- __PATCH:__ partially updates a specified resource
+
+## Simple R API
+
+Let's do a simple example in R using the `{httr2}` package...
+
+```{r}
+library(httr2)
+
+resp <- 
+  request("https://zenquotes.io/api/quotes") |> 
+  req_method('GET') |>
+  req_perform() |> 
+  resp_body_json()
+
+resp[[1]]$q
+```
+
+## Simple R API
+
+But even the previous example is a bit verbose for repeated use. Let's wrap this into a function.
+
+```{r}
+get_quote <- function() {
+  resp <- 
+    request("https://zenquotes.io/api/quotes") |> 
+    req_method('GET') |>
+    req_perform() |> 
+    resp_body_json()
+  resp[[1]]$q
+}
+
+get_quote()
+```
+
+## Object-oriented (OO) approach
+
+- Traditionally, R uses the `S3` object-oriented system which is __functional__ by design
+    
+    + Objects have classes and functions act on classes
+    
+    + Generics and methods
+    
+- Other languages (_e.g._, Python) use an encapsulated OO approach
+
+   + Objects ARE instances of a class definition and methods/attributes BELONG to classes
+
+## S3 OOS
+
+- Generics are "general-purpose" functions that perform an action depending on what class of object it is presented with
+
+- `print()`
+
+- `summary()`
+
+- There are many others
+
+```{r echo=TRUE}
+#| code-fold: true
+print
+```
+
+## S3 OOS
+
+```{r echo=TRUE}
+#| code-fold: true
+print(mtcars)
+```
+
+```{r echo=TRUE}
+#| code-fold: true
+print(lm(mpg ~ hp, mtcars))
+```
+
+## R6 Encapsulated OOS
+
+> R6 is an implemention of encapsulated object-oriented programming for R, and is a simpler, faster, lighter-weight alternative to R’s built-in reference classes. This style of programming is also sometimes referred to as classical object-oriented programming.
+
+```r
+## Standard use of S3 system
+action(object)
+```
+
+Compared to...
+
+```r
+## Standard use of R6 system
+object$action()
+object$field
+```
+
+## Main Classes
+
+- When using `oncosimx`, you will usually be interacting with one (or many) of three specific classes
+
+- `OncoSimXModel`
+    + Class def. for one of the OncoSimX models (e.g., All cancer, breast, cervical, colorectal, lung)
+
+- `OncoSimXWorkset`
+    + Class def. for a set of input parameters (i.e., scenario)
+
+- `OncoSimXModelRun`
+    + Class def. for a model run
+
+## Additional Functions
+
+- `get_models()`, `get_worksets()`, `get_model_runs()`
+
+- `create_scenario()` / `create_workset()`
+
+- `load_model()`, `load_workset()` / `load_scenario()`, `load_model_run()` / `load_run()`
+
+- `delete_scenario()` / `delete_workset()`, `delete_run()`
+
+## Design Considerations
+
+- This is an _opinionated_ framework for programmatically interfacing with OpenM++ and the web-based interface to OncoSimX
+
+- Design principle: abstract away the technical debt associated with calling APIs from R; from the users perspective, it should _look and feel_ like a normal R package
+
+- Trying to achieve feature parity with the GUI
+
+- This package is very much in __beta__ phase of development and is liable to change and I am seeking any and all feedback to improve the package
+
+## OncoSim and OncoSimX
+
+> OncoSim is a free, web-based simulation tool that evaluates cancer control strategies. Combining data from the real world, expert opinion and the published literature, OncoSim projects health and economic outcomes, and attributes them to 19 risk factors, such as smoking and inadequate physical activity. It currently models four cancer sites (breast, colorectal, lung, and cervical) and related screening programs in detail, and provides high-level projections for 25 cancer sites
+
+## First Hands-on Example: RiskPaths
+
+> Being a model for the study of childlessness, the main event of RiskPaths is the first pregnancy (which is always assumed to lead to birth). Pregnancy can occur at any point in time after the 15th birthday, with risks changing by both age and union status. The underlying statistical models are piecewise constant hazard regressions. With respect to fertility this implies the assumption of a constant pregnancy risk for a given age group and union status.
+
+- [RiskPaths: More Information](https://www.statcan.gc.ca/en/microsimulation/modgen/new/chap3/chap3-2#a1)
+
+# `r fa('hands')` Hands-on Examples
+
+## `r fa('far fa-thumbs-up')` Acknowledgements
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- __OpenM++__
+    + Steve Gribble
+    + Anatoly Cherkassky
+
+- __Statistics Canada__
+    + Michael Wolfson
+    + Rochelle Garner
+
+- __CPAC__
+    + Jean Yong
+    + Roxanne Garaszczuk
+:::
+
+::: {.column width="50%"}
+- __Brenner Lab__
+    + Darren Brenner
+    + John Hutchinson
+    + Yibing Ruan
+    + Rob Basmadjian
+    + Mariet Stephen
+    + Keaton Banik
+:::
+
+::::

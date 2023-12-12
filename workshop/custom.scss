@@ -1,0 +1,33 @@
+/*-- scss:defaults --*/
+$presentation-h1-font-size: 1.75em;
+$presentation-h2-font-size: 1.25em;
+$presentation-h3-font-size: 1.1em;
+$presentation-heading-color: 'black';
+$presentation-heading-font-weight: 400;
+
+$presentation-line-height: 1.3;
+
+$presentation-font-size-root: 38px;
+
+$presentation-title-slide-text-align: left;
+
+$font-family-sans-serif: "Source Sans Pro";
+$font-family-monospace: 'Fira Code';
+$presentation-heading-font: 'Montserrat';
+
+$code-block-font-size: 0.75em;
+$code-block-bg: #FAFAFA;
+$code-block-border-color: #000000;
+
+$code-color: #3b3b3b;
+$code-bg: #EBEBEB;
+
+/*-- scss:rules --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Montserrat&display=swap');
+
+a:link {
+  text-decoration: underline;
+}
