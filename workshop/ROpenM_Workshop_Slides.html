@@ -7,18 +7,18 @@
 <link href="ROpenM_Workshop_Slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="ROpenM_Workshop_Slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="ROpenM_Workshop_Slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="ROpenM_Workshop_Slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.301">
-
-  <meta name="author" content="Matt Warkentin, PhD (matthew.warkentin@ucalgary.ca)">
-  <meta name="dcterms.date" content="2024-01-08">
-  <title>Hands-on with R and OpenM++ for Microsimulation</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="ROpenM_Workshop_Slides_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="ROpenM_Workshop_Slides_files/libs/revealjs/dist/reveal.css">
-  <style>
+<link href="ROpenM_Workshop_Slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="author" content="Matt Warkentin, PhD (matthew.warkentin@ucalgary.ca)">
+<meta name="dcterms.date" content="2024-01-08">
+<title>Hands-on with R and OpenM++ for Microsimulation</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="ROpenM_Workshop_Slides_files/libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="ROpenM_Workshop_Slides_files/libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -96,12 +96,12 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="ROpenM_Workshop_Slides_files/libs/revealjs/dist/theme/quarto.css" id="theme">
-  <link href="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="ROpenM_Workshop_Slides_files/libs/revealjs/dist/theme/quarto.css">
+<link href="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -298,7 +298,7 @@
   }
 
   </style>
-  <style type="text/css">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -390,8 +390,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#ffcd00" class="quarto-title-block center">
-  <h1 class="title">Hands-on with R and OpenM++ for Microsimulation</h1>
+<section id="title-slide" data-background-color="#ffcd00" class="quarto-title-block center"><h1 class="title">Hands-on with R and OpenM++ for Microsimulation</h1>
   <p class="subtitle">9th World Congress of the International Microsimulation Association (IMA)</p>
 
 <div class="quarto-title-authors">
@@ -403,149 +402,215 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 </div>
 
   <p class="date">2024-01-08</p>
-</section>
-<section id="who-am-i" class="slide level2">
-<h2>Who am I?</h2>
+</section><section id="who-am-i" class="slide level2"><h2>Who am I?</h2>
 <ul>
 <li><p><strong>Name:</strong> Matt Warkentin</p></li>
 <li><p><strong>Hometown:</strong> Port Dalhousie, Ontario, Canada</p></li>
 <li><p><strong>Living:</strong> Calgary, Alberta, Canada</p></li>
-<li><p><strong>Education:</strong></p>
+<li>
+<p><strong>Education:</strong></p>
 <ul>
 <li>BSc, Medical Sciences, Brock University</li>
 <li>MSc, Epidemiology, Brock University</li>
 <li>PhD, Molecular Epidemiology, University of Toronto</li>
 <li>Postdoc, Dept. of Oncology, University of Calgary</li>
-</ul></li>
 </ul>
-</section>
-<section id="housekeeping" class="slide level2">
-<h2><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M93.13 257.7C71.25 275.1 53 313.5 38.63 355.1L99 333.1c5.75-2.125 10.62 4.749 6.625 9.499L11 454.7C3.75 486.1 0 510.2 0 510.2s206.6 13.62 266.6-34.12c60-47.87 76.63-150.1 76.63-150.1L256.5 216.7C256.5 216.7 153.1 209.1 93.13 257.7zM633.2 12.34c-10.84-13.91-30.91-16.45-44.91-5.624l-225.7 175.6l-34.99-44.06C322.5 131.9 312.5 133.1 309 140.5L283.8 194.1l86.75 109.2l58.75-12.5c8-1.625 11.38-11.12 6.375-17.5l-33.19-41.79l225.2-175.2C641.6 46.38 644.1 26.27 633.2 12.34z"></path></svg> Housekeeping</h2>
+</li>
+</ul></section><section id="disclosures" class="slide level2"><h2>Disclosures</h2>
 <ul>
-<li><p>Active workshop participants should have been provided a <strong>user name</strong> and <strong>login</strong> to connect to the cloud instance of OpenM++</p>
+<li>None to declare
+<ul>
+<li>I do not/have not received any financial compensation from OpenM++</li>
+</ul>
+</li>
+</ul></section><section id="housekeeping" class="slide level2"><h2>
+<svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M627.6 57.3c14-10.9 16.5-31 5.6-44.9s-31-16.5-44.9-5.6l-144 112-72 56-8.7 6.8-30.8-39.4c-3.7-4.8-9.8-7-15.8-5.8s-10.7 5.7-12.3 11.5l-12.5 46.3L371.1 295l48-.9c6.1-.1 11.5-3.7 14.1-9.1s1.9-11.9-1.8-16.7L403 231.9l8.6-6.7 72-56 144-112zM16.7 507.7c37.4 2.8 196.8 12 252.3-31.4c57.7-45.1 76.8-161.5 76.8-161.5L267.1 213.9s-117.6-9.6-175.3 35.5C69 267.1 50.5 304.1 36.3 344c-2.4 6.7 4.7 12.8 11 9.4L86.2 333c4.1-2.2 9.2-1.1 12 2.6s2.7 8.8-.4 12.3L24.4 430.4C13.2 442.9 5.5 458.1 2.4 474.5c-.9 4.8-1.6 8.9-2.2 12.1c-.9 5 .5 10.1 3.6 14.1s7.7 6.6 12.8 7z"></path></svg> Housekeeping</h2>
+<ul>
+<li>
+<p>Active workshop participants should have been provided a <strong>user name</strong> and <strong>login</strong> to connect to the cloud instance of OpenM++</p>
 <ul>
 <li>Please come see me if you don’t yet have this information</li>
-</ul></li>
+</ul>
+</li>
 <li><p>Passive participants, please feel free to ask questions and interact with the workshop team</p></li>
 <li><p>Ask questions!</p></li>
-</ul>
-</section>
-<section id="agenda" class="slide level2">
-<h2><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M152.1 38.16C161.9 47.03 162.7 62.2 153.8 72.06L81.84 152.1C77.43 156.9 71.21 159.8 64.63 159.1C58.05 160.2 51.69 157.6 47.03 152.1L7.029 112.1C-2.343 103.6-2.343 88.4 7.029 79.03C16.4 69.66 31.6 69.66 40.97 79.03L63.08 101.1L118.2 39.94C127 30.09 142.2 29.29 152.1 38.16V38.16zM152.1 198.2C161.9 207 162.7 222.2 153.8 232.1L81.84 312.1C77.43 316.9 71.21 319.8 64.63 319.1C58.05 320.2 51.69 317.6 47.03 312.1L7.029 272.1C-2.343 263.6-2.343 248.4 7.029 239C16.4 229.7 31.6 229.7 40.97 239L63.08 261.1L118.2 199.9C127 190.1 142.2 189.3 152.1 198.2V198.2zM224 96C224 78.33 238.3 64 256 64H480C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H256C238.3 128 224 113.7 224 96V96zM224 256C224 238.3 238.3 224 256 224H480C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H256C238.3 288 224 273.7 224 256zM160 416C160 398.3 174.3 384 192 384H480C497.7 384 512 398.3 512 416C512 433.7 497.7 448 480 448H192C174.3 448 160 433.7 160 416zM0 416C0 389.5 21.49 368 48 368C74.51 368 96 389.5 96 416C96 442.5 74.51 464 48 464C21.49 464 0 442.5 0 416z"></path></svg> Agenda</h2>
+</ul></section><section id="agenda" class="slide level2"><h2>
+<svg aria-hidden="true" role="img" viewbox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M184.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L39 113c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L39 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM256 96c0-17.7 14.3-32 32-32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H288c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H288c-17.7 0-32-14.3-32-32zM192 416c0-17.7 14.3-32 32-32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32zM80 464c-26.5 0-48-21.5-48-48s21.5-48 48-48s48 21.5 48 48s-21.5 48-48 48z"></path></svg> Agenda</h2>
 <ol type="1">
 <li><p>Brief history of OpenM++</p></li>
 <li><p>Introduction to the OpenM++ API</p></li>
-<li><p>Wrapping an API in R</p></li>
-<li><p>Introduction to <code>oncosimx</code></p></li>
-<li><p>Hands-on examples</p></li>
+<li>
+<p>Wrapping an API in R</p>
+<ul>
+<li>Including some tricks-of-the-trade</li>
+</ul>
+</li>
+<li><p>Introduction to <a href="https://github.com/oncology-outcomes/oncosimx">oncosimx</a></p></li>
+<li>
+<p>Hands-on examples</p>
+<ul>
+<li>RiskPaths: Childlessness model</li>
+<li>OncoSimX-allcancers: Cancer model</li>
+</ul>
+</li>
 <li><p>Concluding remarks</p></li>
-</ol>
-</section>
-<section id="what-is-openm" class="slide level2">
-<h2>What is OpenM++</h2>
+</ol></section><section id="what-i-hope-to-achieve" class="slide level2"><h2>What I hope to achieve?</h2>
+<ol type="1">
+<li><p>Provide contextual background information on the history, design considerations, and features of OpenM++</p></li>
+<li><p>Provide insights into how the OpenM++ API works and how it can work for YOU</p></li>
+<li><p>Provide some <em>“tricks of the trade”</em> for how to effectively wrap stateful APIs into seamless R packages</p></li>
+<li><p>Provide some <em>“hands on”</em> examples of how this looks and feels when it all comes together</p></li>
+</ol></section><section><section id="brief-history-of-openm" class="title-slide slide level1 center"><h1>Brief history of OpenM++</h1>
+<p>Michael C. Wolfson, PhD</p>
+<p>University of Ottawa</p>
+</section><section id="what-is-openm" class="slide level2"><h2>What is OpenM++</h2>
 <blockquote>
-<p>OpenM++ is an open source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop simple or complex models.</p>
+<p>OpenM++ is an open-source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop simple or complex models.</p>
 </blockquote>
 <ul>
 <li><p>Primarily written in C and C++</p></li>
 <li><p>Can install and run on Mac, Windows, and Linux</p></li>
-<li><p>Heir apparent to Modgen</p>
+<li>
+<p><em>Heir apparent</em> to <strong>Modgen</strong></p>
 <ul>
 <li>The OpenM++ language is based on the Modgen language developed at Statistics Canada. With minor modifications to model source code…</li>
-</ul></li>
 </ul>
-</section>
-<section id="why-openm-general-features" class="slide level2">
-<h2>Why OpenM++: General features</h2>
+</li>
+</ul></section><section id="why-supercede-modgen" class="slide level2"><h2>Why supercede Modgen?</h2>
 <ul>
-<li><p>open source: OpenM++ and all components are licensed under the very broad MIT license.</p></li>
-<li><p>cross-platform: Model development and use on Windows, Linux, or MacOS.</p></li>
-<li><p>standards-based: Uses industry standard formats and technologies.</p></li>
-<li><p>zero-footprint: File-based installation requires no elevation of privileges.</p></li>
-</ul>
-</section>
-<section id="why-openm-model-developer-features" class="slide level2">
-<h2>Why OpenM++: Model developer features</h2>
+<li><p>Add some brief points here to provide context…</p></li>
+<li>
+<p><a href="https://www.statcan.gc.ca/en/microsimulation/modgen/new/introduction/introduction">Introduction to Modgen</a></p>
 <ul>
-<li><p>high-level language: Model types, parameters, entities, events, tables, etc. are specified using a compact domain-specific language targeted to microsimulation.</p></li>
-<li><p>scalable complexity: From simple ‘toy’ models to highly complex models.</p></li>
-<li><p>modularity: New events and processes can be added to a model in a new module, often with little or no modification to existing modules. continuous or discrete time, or a mixture.</p></li>
-<li><p>supports multiple versions: Multiple OpenM++ versions can be installed and a single environment variable used to choose among them.</p></li>
-<li><p>result compare: Supports rapid comparison of all model outputs during incremental model development.</p></li>
+<li>For the interested reader…</li>
 </ul>
-</section>
-<section id="why-openm-computational-features" class="slide level2">
-<h2>Why OpenM++: Computational features</h2>
+</li>
+</ul></section><section id="why-openm-general-features" class="slide level2"><h2>Why OpenM++: General features</h2>
 <ul>
-<li><p>scalable computation: Designed to scale linearly with population size or replicates when possible, N log N scaling for typical interacting populations.</p></li>
-<li><p>grid-enabled, cloud-enabled: Supports MPI for multi-processing to distribute execution of replicates to a small or large computational grid or to the cloud, with automatic result assembly.</p></li>
-<li><p>multi-threaded: Supports multi-threading for parallel execution of replicates on desktop or server.</p></li>
-<li><p>on-the-fly tabulation: Tables are computed during the simulation, eliminating the need to output voluminous microdata for subsequent tabulation.</p></li>
-<li><p>computationally efficient: The model specification is transformed to C++ which is processed by an optimizing C++ compiler to produce a highly efficient executable program.</p></li>
+<li><p><strong>Open source</strong>: OpenM++ and all components are licensed under the very broad MIT license</p></li>
+<li><p><strong>Cross-platform</strong>: Model development and use on Windows, Linux, or MacOS</p></li>
+<li><p><strong>Standards-based</strong>: Uses industry standard formats and technologies</p></li>
+<li><p><strong>Zero-footprint</strong>: File-based installation requires no elevation of privileges</p></li>
 </ul>
-</section>
-<section id="why-openm-usability-features" class="slide level2">
-<h2>Why OpenM++: Usability features</h2>
+<div class="footer">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html" class="uri">https://openmpp.org/wiki/openmpp-wiki.html</a></p>
+</div>
+</section><section id="why-openm-model-developer-features" class="slide level2"><h2>Why OpenM++: Model developer features</h2>
 <ul>
-<li><p>generated UI: A model-specific UI is generated from the model specification.</p></li>
-<li><p>browser-based UI: The UI requires only a browser, and runs on almost any modern browser.</p></li>
-<li><p>cloud-enabled: Models can be deployed to a cloud and accessed remotely over the web, from a browser.</p></li>
-<li><p>multilingual support: For UI and for model, with real-time language switching</p></li>
+<li><p><strong>High-level language</strong>: Model types, parameters, entities, events, tables, etc. are specified using a compact domain-specific language targeted to microsimulation</p></li>
+<li><p><strong>Scalable complexity</strong>: From simple ‘toy’ models to highly complex models</p></li>
+<li><p><strong>Modularity</strong>: New events and processes can be added to a model in a new module, often with little or no modification to existing modules. continuous or discrete time, or a mixture</p></li>
 </ul>
-</section>
-<section id="why-openm-analyst-features" class="slide level2">
-<h2>Why OpenM++: Analyst features</h2>
+<div class="footer">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html" class="uri">https://openmpp.org/wiki/openmpp-wiki.html</a></p>
+</div>
+</section><section id="why-openm-model-developer-features-1" class="slide level2"><h2>Why OpenM++: Model developer features</h2>
 <ul>
-<li><p>continuous time tabulation: Powerful but easy to use language constructs to tabulate time-in-state, empirical hazards, transitions counts, state changes, etc.</p></li>
-<li><p>replicate support: All tables can have underlying replicate simulations to assess the uncertainty of any cell of any output table. Statistical measures of uncertainty are computed for all cells of all tables.</p></li>
-<li><p>automation: Models can be controlled by scripts, eg Python or R.</p></li>
-<li><p>import/export: Models and runs can be moved between databases, or to standard formats for upstream preparation of inputs or for downstream analysis of outputs.</p></li>
-<li><p>dynamic run control: A computational grid can process runs dynamically to enable whole-model estimation or calibration, with a controlling script reading run results and preparing new runs for execution.</p></li>
+<li><p><strong>Supports multiple versions</strong>: Multiple OpenM++ versions can be installed and a single environment variable used to choose among them</p></li>
+<li><p><strong>Result compare</strong>: Supports rapid comparison of all model outputs during incremental model development</p></li>
 </ul>
-</section>
-<section id="openm-workshop-focus" class="slide level2">
-<h2>OpenM++: Workshop focus</h2>
+<div class="footer">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html" class="uri">https://openmpp.org/wiki/openmpp-wiki.html</a></p>
+</div>
+</section><section id="why-openm-computational-features" class="slide level2"><h2>Why OpenM++: Computational features</h2>
+<ul>
+<li><p><strong>Scalable computation</strong>: Designed to scale linearly with population size or replicates when possible, N log N scaling for typical interacting populations</p></li>
+<li><p><strong>Grid-enabled, cloud-enabled</strong>: Supports MPI for multi-processing to distribute execution of replicates to a small or large computational grid or to the cloud, with automatic result assembly</p></li>
+<li><p><strong>Multi-threaded</strong>: Supports multi-threading for parallel execution of replicates on desktop or server</p></li>
+</ul>
+<div class="footer">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html" class="uri">https://openmpp.org/wiki/openmpp-wiki.html</a></p>
+</div>
+</section><section id="why-openm-computational-features-1" class="slide level2"><h2>Why OpenM++: Computational features</h2>
+<ul>
+<li><p><strong>On-the-fly tabulation</strong>: Tables are computed during the simulation, eliminating the need to output voluminous microdata for subsequent tabulation</p></li>
+<li><p><strong>Computationally efficient</strong>: The model specification is transformed to C++ which is processed by an optimizing C++ compiler to produce a highly efficient executable program</p></li>
+</ul>
+<div class="footer">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html" class="uri">https://openmpp.org/wiki/openmpp-wiki.html</a></p>
+</div>
+</section><section id="why-openm-usability-features" class="slide level2"><h2>Why OpenM++: Usability features</h2>
+<ul>
+<li><p><strong>Generated UI</strong>: A model-specific UI is generated from the model specification</p></li>
+<li><p><strong>Browser-based UI</strong>: The UI requires only a browser, and runs on almost any modern browser</p></li>
+<li><p><strong>Cloud-enabled</strong>: Models can be deployed to a cloud and accessed remotely over the web, from a browser</p></li>
+<li><p><strong>Multilingual support</strong>: For UI and for model, with real-time language switching</p></li>
+</ul>
+<div class="footer">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html" class="uri">https://openmpp.org/wiki/openmpp-wiki.html</a></p>
+</div>
+</section><section id="why-openm-analyst-features" class="slide level2"><h2>Why OpenM++: Analyst features</h2>
+<ul>
+<li><p><strong>Continuous time tabulation</strong>: Powerful but easy to use language constructs to tabulate time-in-state, empirical hazards, transitions counts, state changes, etc.</p></li>
+<li><p><strong>Replicate support</strong>: All tables can have underlying replicate simulations to assess the uncertainty of any cell of any output table. Statistical measures of uncertainty are computed for all cells of all tables</p></li>
+<li><p><strong>Automation</strong>: Models can be controlled by scripts, <em>e.g.</em>, Python or R</p></li>
+</ul>
+<div class="footer">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html" class="uri">https://openmpp.org/wiki/openmpp-wiki.html</a></p>
+</div>
+</section><section id="why-openm-analyst-features-1" class="slide level2"><h2>Why OpenM++: Analyst features</h2>
+<ul>
+<li><p><strong>Import/export</strong>: Models and runs can be moved between databases, or to standard formats for upstream preparation of inputs or for downstream analysis of outputs</p></li>
+<li><p><strong>Dynamic run control</strong>: A computational grid can process runs dynamically to enable whole-model estimation or calibration, with a controlling script reading run results and preparing new runs for execution</p></li>
+</ul>
+<div class="footer">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html" class="uri">https://openmpp.org/wiki/openmpp-wiki.html</a></p>
+</div>
+</section><section id="openm-workshop-focus" class="slide level2"><h2>OpenM++: Workshop focus</h2>
 <ul>
 <li>This workshop will primarily focus on the “analysts” perspective for what the benefits are of using OpenM++</li>
 </ul>
+<p><strong>OpenM++: Analyst features:</strong></p>
 <blockquote>
 <p>Automation: Models can be controlled by scripts, e.g., Python or R.</p>
 </blockquote>
 <ul>
-<li>How? Why?</li>
+<li><p>How can we do this?</p></li>
+<li><p>Why would we do this?</p></li>
+<li><p>What are the benefits?</p></li>
+</ul></section><section id="the-setup" class="slide level2"><h2>The setup</h2>
+<ul>
+<li>You developed a microsimulation model in OpenM++. You can control the simulation using several (or many many) parameters and run the simulation to get output tables.
+<ul>
+<li>I come from the oncology world, so my models are cancer-focused, but yours might be finance, pensions, taxes, etc.</li>
 </ul>
-</section>
-<section id="openm-api" class="slide level2">
-<h2>OpenM++ API</h2>
+</li>
+<li>You are like me, in that you <strong>DO NOT</strong> like using graphical user interfaces (GUI) to configure and run models, because:
+<ul>
+<li>Lacks transparency</li>
+<li>Lacks reproducibility</li>
+<li>Does not scale well</li>
+</ul>
+</li>
+</ul></section><section id="openm-api" class="slide level2"><h2>OpenM++ API</h2>
 <blockquote>
-<p>The model API provides programmatic access to scenario management, model inputs, model runs, and model outputs. It is implemented by the OpenM++ oms web service, which uses standard JSON to communicate with a controlling application.</p>
+<p>The [OpenM++] model API provides programmatic access to scenario management, model inputs, model runs, and model outputs. It is implemented by the OpenM++ oms web service, which uses standard JSON to communicate with a controlling application.</p>
 </blockquote>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API">API Documentation</a></p>
 <ul>
-<li><a href="https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API">API Documentation</a></li>
-</ul>
-</section>
-<section id="what-is-an-api" class="slide level2">
-<h2>What is an API?</h2>
+<li>The OpenM++ API has over 100 endpoints for querying, setting, and deleting data</li>
+</ul></section><section id="but-what-is-an-api" class="slide level2"><h2>But, what is an API?</h2>
 <ul>
-<li><p>Stands for “Application Programming Interface”</p>
+<li>
+<p>Stands for <em>“Application Programming Interface”</em></p>
 <ul>
 <li>Is that helpful?</li>
-</ul></li>
-<li><p>In simple terms, it is a software for allowing two applications to <em>“talk”</em> to each other</p></li>
-<li><p>The communication occurs using a well-defined and structured language</p></li>
-<li><p>Most modern API conform to “REST” standards (i.e., a RESTful API)</p></li>
 </ul>
-</section>
-<section id="what-is-a-restful-api" class="slide level2">
-<h2>What is a RESTful API?</h2>
+</li>
+<li><p>In simple terms, it is a software for allowing two applications to <em>“communicate”</em> with each other</p></li>
+<li><p>The communication occurs using a well-defined and structured language (<em>i.e.</em>, send requests, receive responses)</p></li>
+<li><p>Most modern APIs conform to so-called “<strong>REST</strong>” standards (<em>i.e.</em>, a RESTful API)</p></li>
+</ul></section><section id="api-schematic" class="slide level2"><h2>API Schematic</h2>
+
+<img data-src="assets/diagram-what-is-an-api-postman-illustration.svg" class="r-stretch"><div class="footer">
+<p><a href="https://www.postman.com/what-is-an-api/" class="uri">https://www.postman.com/what-is-an-api/</a></p>
+</div>
+</section><section id="what-is-a-restful-api" class="slide level2"><h2>What is a RESTful API?</h2>
 <ul>
 <li><p>A versatile interface for sending and retrieving data through HTTP requests in JSON or other formats (e.g., XML, CSV, plain-text)</p></li>
 <li><p>REST (Representational State Transfer) APIs represent an example of these interfaces since they use the principles underpinning the REST architectural design when communicating between clients and servers.</p></li>
 <li><p>This design includes predefined sets of different operations parameters available via standard HTTP methods such as GET, POST, PUT or DELETE while allowing scalability.</p></li>
-</ul>
-</section>
-<section id="restful-api-request-methods" class="slide level2">
-<h2>RESTful API request methods</h2>
+</ul></section><section id="restful-api-request-methods" class="slide level2"><h2>RESTful API request methods</h2>
 <ul>
 <li><p>There are five popular kinds of API request methods: GET, POST, PUT, PATCH, and DELETE</p></li>
 <li><p><strong>GET:</strong> retrieves information or data from a specified resource</p></li>
@@ -553,97 +618,158 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <li><p><strong>PUT:</strong> updates a specified resource with new data</p></li>
 <li><p><strong>DELETE:</strong> deletes a specified resource</p></li>
 <li><p><strong>PATCH:</strong> partially updates a specified resource</p></li>
-</ul>
-</section>
-<section id="simple-r-api" class="slide level2">
-<h2>Simple R API</h2>
-<p>Let’s do a simple example in R using the <code>{httr2}</code> package…</p>
+</ul></section><section id="building-an-api-request-in-r" class="slide level2"><h2>Building an API request in R</h2>
+<p>We will utilize the <code>httr2</code> package…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(httr2)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>resp <span class="ot">&lt;-</span> </span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">request</span>(<span class="st">"https://zenquotes.io/api/quotes"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">req_method</span>(<span class="st">'GET'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">resp_body_json</span>()</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>resp[[<span class="dv">1</span>]]<span class="sc">$</span>q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr2.r-lib.org">httr2</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">resp</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="st">'url goes here...'</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_method.html">req_method</a></span><span class="op">(</span><span class="st">'GET'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://httr2.r-lib.org/reference/resp_status.html">resp_status</a></span><span class="op">(</span><span class="va">resp</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://httr2.r-lib.org/reference/resp_status.html">resp_status_desc</a></span><span class="op">(</span><span class="va">resp</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html">resp_body_json</a></span><span class="op">(</span><span class="va">resp</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>Request methods are prefixed with <code>req_*</code></p></li>
+<li><p>Response methods are prefixed with <code>resp_*</code></p></li>
+</ul>
+<div class="footer">
+<p><a href="https://httr2.r-lib.org" class="uri">https://httr2.r-lib.org</a></p>
+</div>
+</section><section id="simple-r-api-motivational-quotes" class="slide level2"><h2>Simple R API: Motivational Quotes</h2>
+<p>Let’s do a simple example in R using the <a href="https://httr2.r-lib.org">httr2</a> package…</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr2.r-lib.org">httr2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">resp</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="st">"https://zenquotes.io/api/quotes"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_method.html">req_method</a></span><span class="op">(</span><span class="st">'GET'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://httr2.r-lib.org/reference/resp_status.html">resp_status</a></span><span class="op">(</span><span class="va">resp</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "If you care about someone enough, you'll always be there for them no matter what."</code></pre>
+<pre><code>[1] 200</code></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://httr2.r-lib.org/reference/resp_status.html">resp_status_desc</a></span><span class="op">(</span><span class="va">resp</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "OK"</code></pre>
 </div>
 </div>
-</section>
-<section id="simple-r-api-1" class="slide level2">
-<h2>Simple R API</h2>
+</section><section id="simple-r-api-motivational-quotes-1" class="slide level2"><h2>Simple R API: Motivational Quotes</h2>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">resp</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>&lt;httr2_response&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>GET https://zenquotes.io/api/quotes</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Status: 200 OK</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Content-Type: application/json</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Body: In memory (13142 bytes)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">quotes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html">resp_body_json</a></span><span class="op">(</span><span class="va">resp</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">quotes</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Tradition is the illusion of permanence. "</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">quotes</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Pleasure is always derived from something outside you, whereas joy arises from within. "</code></pre>
+</div>
+</div>
+</section><section id="simple-r-api-motivational-quotes-2" class="slide level2"><h2>Simple R API: Motivational Quotes</h2>
 <p>But even the previous example is a bit verbose for repeated use. Let’s wrap this into a function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>get_quote <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  resp <span class="ot">&lt;-</span> </span>
-<span id="cb3-3"><a href="#cb3-3"></a>    <span class="fu">request</span>(<span class="st">"https://zenquotes.io/api/quotes"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-4"><a href="#cb3-4"></a>    <span class="fu">req_method</span>(<span class="st">'GET'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>    <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb3-6"><a href="#cb3-6"></a>    <span class="fu">resp_body_json</span>()</span>
-<span id="cb3-7"><a href="#cb3-7"></a>  resp[[<span class="dv">1</span>]]<span class="sc">$</span>q</span>
-<span id="cb3-8"><a href="#cb3-8"></a>}</span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="fu">get_quote</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_quote</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">resp</span> <span class="op">&lt;-</span> </span>
+<span>    <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="st">"https://zenquotes.io/api/quotes"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://httr2.r-lib.org/reference/req_method.html">req_method</a></span><span class="op">(</span><span class="st">'GET'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html">resp_body_json</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">resp</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">q</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">get_quote</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Life must be rich and full of loving-it's no good otherwise, no good at all, for anyone.  "</code></pre>
+<pre><code>[1] "The truth is rarely pure and never simple. "</code></pre>
 </div>
 </div>
-</section>
-<section id="object-oriented-oo-approach" class="slide level2">
-<h2>Object-oriented (OO) approach</h2>
+</section></section><section><section id="basic-idea-obfuscate-the-technical-debt-for-making-api-requests-in-r-into-modular-user-friendly-functions" class="title-slide slide level1 center" data-background-color="#ffa300"><h1>
+<strong>Basic idea</strong>: obfuscate the technical debt for making API requests in R into modular user-friendly functions</h1>
+
+</section><section id="a-rich-history-of-wrapping-apis" class="slide level2"><h2>A rich history of wrapping APIs…</h2>
+
+<img data-src="assets/imports.png" class="r-stretch"></section></section><section id="quick-recap" class="title-slide slide level1 center"><h1>Quick Recap</h1>
 <ul>
-<li><p>Traditionally, R uses the <code>S3</code> object-oriented system which is <strong>functional</strong> by design</p>
+<li><p>We have briefly learned what APIs are and how we communicate with them</p></li>
+<li><p>We have learned how to wrap simple API requests into reusable R functions</p></li>
+<li><p>Next, we will step up in complexity to learn some more advanced techniques for wrapping APIs (e.g., OpenM++) that allow more sophisticated communications</p></li>
+</ul></section><section><section id="r-tricks-of-the-trade" class="title-slide slide level1 center"><h1>
+<svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R Tricks-of-the-trade</h1>
+
+</section><section id="object-oriented-oo-approach" class="slide level2"><h2>Object-oriented (OO) approach</h2>
+<ul>
+<li>
+<p>Traditionally, R uses the <code>S3</code> object-oriented system which is <strong>functional</strong> by design</p>
 <ul>
 <li><p>Objects have classes and functions act on classes</p></li>
 <li><p>Generics and methods</p></li>
-</ul></li>
-<li><p>Other languages (<em>e.g.</em>, Python) use an encapsulated OO approach</p>
+</ul>
+</li>
+<li>
+<p>Other languages (<em>e.g.</em>, Python) use an encapsulated OO approach</p>
 <ul>
 <li>Objects ARE instances of a class definition and methods/attributes BELONG to classes</li>
-</ul></li>
 </ul>
-</section>
-<section id="s3-oos" class="slide level2">
-<h2>S3 OOS</h2>
+</li>
+</ul></section><section id="when-to-use-s3-basically-always" class="slide level2"><h2>When to use S3? Basically always…</h2>
+<blockquote>
+<p>S3 is R’s first and simplest OO system. S3 is informal and ad hoc, but there is a certain elegance in its minimalism: you can’t take away any part of it and still have a useful OO system. <strong>For these reasons, you should use it, unless you have a compelling reason to do otherwise.</strong></p>
+</blockquote>
+<ul>
+<li>I think communicating with a stateful API connected to a database is a compelling reason</li>
+</ul>
+<div class="footer">
+<p><a href="https://adv-r.hadley.nz/s3.html#introduction-12" class="uri">https://adv-r.hadley.nz/s3.html#introduction-12</a></p>
+</div>
+</section><section id="s3-oos" class="slide level2"><h2>S3 OOS</h2>
 <ul>
 <li><p>Generics are “general-purpose” functions that perform an action depending on what class of object it is presented with</p></li>
-<li><p><code>print()</code></p></li>
-<li><p><code>summary()</code></p></li>
+<li><p><code><a href="https://rdrr.io/r/base/print.html">print()</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code></p></li>
 <li><p>There are many others</p></li>
 </ul>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details><summary>Code</summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">print</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>function (x, ...) 
 UseMethod("print")
-&lt;bytecode: 0x11fca1960&gt;
+&lt;bytecode: 0x109bc9240&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>
-</section>
-<section id="s3-oos-1" class="slide level2">
-<h2>S3 OOS</h2>
+</section><section id="s3-oos-1" class="slide level2"><h2>S3 OOS</h2>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">print</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     mpg cyl disp hp drat wt qsec vs am gear carb
  [ reached 'max' / getOption("max.print") -- omitted 32 rows ]</code></pre>
 </div>
 </div>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">print</span>(<span class="fu">lm</span>(mpg <span class="sc">~</span> hp, mtcars))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span>, <span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -654,107 +780,302 @@ Coefficients:
    30.09886     -0.06823  </code></pre>
 </div>
 </div>
-</section>
-<section id="r6-encapsulated-oos" class="slide level2">
-<h2>R6 Encapsulated OOS</h2>
+</section><section id="r6-versus-s3" class="slide level2"><h2>R6 versus S3</h2>
+<p>From Advanced R (2e) by Hadley Wickham</p>
+<ul>
+<li><p>R6 is a profoundly different OO system from S3 and S4 because it is built on encapsulated objects, rather than generic functions. Additionally R6 objects have reference semantics, which means that they can be modified in place. These two big differences have a number of non-obvious consequences which we’ll explore here:</p></li>
+<li><p>A generic is a regular function so it lives in the global namespace. An R6 method belongs to an object so it lives in a local namespace. This influences how we think about naming.</p></li>
+</ul>
+<div class="footer">
+<p><a href="https://adv-r.hadley.nz/oo-tradeoffs.html#s3-r6" class="uri">https://adv-r.hadley.nz/oo-tradeoffs.html#s3-r6</a></p>
+</div>
+</section><section id="r6-encapsulated-oos" class="slide level2"><h2>R6 Encapsulated OOS</h2>
+<p>From Advanced R (2e) by Hadley Wickham</p>
+<ul>
+<li><p>R6’s reference semantics allow methods to simultaneously return a value and modify an object. This solves a painful problem called “threading state”.</p></li>
+<li><p>You invoke an R6 method using <code>$</code>, which is an infix operator. If you set up your methods correctly you can use chains of method calls as an alternative to the pipe.</p></li>
+</ul>
+<div class="footer">
+<p><a href="https://adv-r.hadley.nz/oo-tradeoffs.html#s3-r6" class="uri">https://adv-r.hadley.nz/oo-tradeoffs.html#s3-r6</a></p>
+</div>
+</section><section id="r6-encapsulated-oos-1" class="slide level2"><h2>R6 Encapsulated OOS</h2>
 <blockquote>
 <p>R6 is an implemention of encapsulated object-oriented programming for R, and is a simpler, faster, lighter-weight alternative to R’s built-in reference classes. This style of programming is also sometimes referred to as classical object-oriented programming.</p>
 </blockquote>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="do">## Standard use of S3 system</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">action</span>(object)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Standard use of S3 system</span></span>
+<span><span class="fu">action</span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Compared to…</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="do">## Standard use of R6 system</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>object<span class="sc">$</span><span class="fu">action</span>()</span>
-<span id="cb12-3"><a href="#cb12-3"></a>object<span class="sc">$</span>field</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="main-classes" class="slide level2">
-<h2>Main Classes</h2>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Standard use of R6 system</span></span>
+<span><span class="va">object</span><span class="op">$</span><span class="fu">action</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">object</span><span class="op">$</span><span class="va">field</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p><a href="https://r6.r-lib.org/index.html" class="uri">https://r6.r-lib.org/index.html</a></p>
+</div>
+</section><section id="dog-example-s3-approach" class="slide level2"><h2>Dog example: S3 Approach</h2>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bucky</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    name <span class="op">=</span> <span class="st">'bucky'</span>,</span>
+<span>    noise <span class="op">=</span> <span class="st">'bark'</span>,</span>
+<span>    species <span class="op">=</span> <span class="st">'dog'</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  class <span class="op">=</span> <span class="st">'Dog'</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># New S3 method</span></span>
+<span><span class="va">print.Dog</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">noise</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bucky</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>bark</code></pre>
+</div>
+</div>
+</section><section id="dog-example-r6-approach" class="slide level2"><h2>Dog example: R6 approach</h2>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r6.r-lib.org">R6</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Dog</span> <span class="op">&lt;-</span></span>
+<span>  <span class="kw"><a href="https://r6.r-lib.org/reference/R6Class.html">R6Class</a></span><span class="op">(</span></span>
+<span>    classname <span class="op">=</span> <span class="st">'Dog'</span>,</span>
+<span>    public <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>      name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>      species <span class="op">=</span> <span class="st">'dog'</span>,</span>
+<span>      initialize <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">{</span></span>
+<span>        <span class="va">self</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="va">name</span></span>
+<span>      <span class="op">}</span>,</span>
+<span>      make_noise <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">'bark'</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="dog-example-r6-approach-1" class="slide level2"><h2>Dog example: R6 approach</h2>
+<div class="cell">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bucky</span> <span class="op">&lt;-</span> <span class="va">Dog</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="st">'Bucky'</span><span class="op">)</span></span>
+<span><span class="va">bucky</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bucky</span><span class="op">$</span><span class="va">species</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dog"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bucky</span><span class="op">$</span><span class="fu">make_noise</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>bark</code></pre>
+</div>
+</div>
+<ul>
+<li>With R6 OOS, attributes and methods BELONG to an object</li>
+</ul></section><section id="active-bindings" class="slide level2"><h2>Active Bindings</h2>
+<blockquote>
+<p><code><a href="https://rdrr.io/r/base/bindenv.html">makeActiveBinding()</a></code> installs <code>fun</code> in environment <code>env</code> so that getting the value of <code>sym</code> calls fun with no arguments, and assigning to <code>sym</code> calls <code>fun</code> with one argument, the value to be assigned. This allows the implementation of things like <code>C</code> variables linked to <code>R</code> variables and variables linked to databases</p>
+</blockquote>
+<ul>
+<li>Active bindings are a first-class feature in R6, so we typically don’t use <code>makeActiveBinding</code> directly…</li>
+</ul></section><section id="active-bindings-1" class="slide level2"><h2>Active Bindings</h2>
+<ul>
+<li><p>That isn’t a very clear definition, let me try…</p></li>
+<li>
+<p>Active bindings <strong>LOOK</strong> like standard R objects in your global/local environment, but:</p>
+<ul>
+<li>When you <strong>ACCESS</strong> the objects value it actually runs a function in the background</li>
+<li>When you <strong>ASSIGN</strong> to the object it runs a function with the assigned value as its only argument (<em>optionally</em>)</li>
+</ul>
+</li>
+<li><p><strong>NOTE:</strong> Active bindings should be used sparingly, if at all. They are hard to reason about using standard R logic and should be avoided unless absolutely necessary</p></li>
+</ul></section><section id="active-bindings-2" class="slide level2"><h2>Active Bindings</h2>
+<div class="cell">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/missing.html">missing</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">'This runs'</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">'Or this runs...'</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/bindenv.html">makeActiveBinding</a></span><span class="op">(</span><span class="st">'example_binding'</span>, <span class="va">f</span>, <span class="va">.GlobalEnv</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_binding</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This runs</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_binding</span> <span class="op">&lt;-</span> <span class="fl">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Or this runs...</code></pre>
+</div>
+</div>
+</section><section id="how-does-this-help-us" class="slide level2"><h2>How does this help us?</h2>
+<ul>
+<li><p>This feature is useful because our models/data live in a database and so it allows us to create bindings that always run functions in the background to communicate and stay <em>up-to-date</em> with the server (i.e., OpenM++)</p></li>
+<li><p>Example: when a user tries to access an output table, a function is ran to retrieve the table in real-time to ensure it is accurate and up-to-date</p></li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Real-time communication with API behind-the-scenes</span></span>
+<span><span class="va">model_run</span><span class="op">$</span><span class="va">important_table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section><section><section id="example-oncosimx-r-package" class="title-slide slide level1 center"><h1>Example: <code>oncosimx</code> R package</h1>
+<p>Programmatic interface to OpenM++ and OncoSimX</p>
+</section><section id="main-classes" class="slide level2"><h2>Main Classes</h2>
 <ul>
 <li><p>When using <code>oncosimx</code>, you will usually be interacting with one (or many) of three specific classes</p></li>
-<li><p><code>OncoSimXModel</code></p>
+<li>
+<p><code>OncoSimXModel</code></p>
 <ul>
 <li>Class def. for one of the OncoSimX models (e.g., All cancer, breast, cervical, colorectal, lung)</li>
-</ul></li>
-<li><p><code>OncoSimXWorkset</code></p>
+</ul>
+</li>
+<li>
+<p><code>OncoSimXWorkset</code></p>
 <ul>
 <li>Class def. for a set of input parameters (i.e., scenario)</li>
-</ul></li>
-<li><p><code>OncoSimXModelRun</code></p>
+</ul>
+</li>
+<li>
+<p><code>OncoSimXModelRun</code></p>
 <ul>
 <li>Class def. for a model run</li>
-</ul></li>
 </ul>
-</section>
-<section id="additional-functions" class="slide level2">
-<h2>Additional Functions</h2>
+</li>
+</ul></section><section id="additional-functions" class="slide level2"><h2>Additional Functions</h2>
 <ul>
 <li><p><code>get_models()</code>, <code>get_worksets()</code>, <code>get_model_runs()</code></p></li>
 <li><p><code>create_scenario()</code> / <code>create_workset()</code></p></li>
 <li><p><code>load_model()</code>, <code>load_workset()</code> / <code>load_scenario()</code>, <code>load_model_run()</code> / <code>load_run()</code></p></li>
 <li><p><code>delete_scenario()</code> / <code>delete_workset()</code>, <code>delete_run()</code></p></li>
 </ul>
-</section>
-<section id="design-considerations" class="slide level2">
-<h2>Design Considerations</h2>
+<p>Each of these functions is an API request to OpenM++ wrapped into a friendly helper function…</p>
+</section></section><section><section id="schematic-id" class="title-slide slide level1 center"><h1></h1>
+
+<img data-src="assets/illustrations/illustrations.001.jpeg" class="r-stretch quarto-figure-center"></section><section id="design-considerations" class="slide level2"><h2>Design Considerations</h2>
 <ul>
-<li><p>This is an <em>opinionated</em> framework for programmatically interfacing with OpenM++ and the web-based interface to OncoSimX</p></li>
+<li><p>This is an <em>opinionated</em> framework for programmatically interfacing with OpenM++ and the cloud-based interface to OncoSimX</p></li>
 <li><p>Design principle: abstract away the technical debt associated with calling APIs from R; from the users perspective, it should <em>look and feel</em> like a normal R package</p></li>
 <li><p>Trying to achieve feature parity with the GUI</p></li>
-<li><p>This package is very much in <strong>beta</strong> phase of development and is liable to change and I am seeking any and all feedback to improve the package</p></li>
-</ul>
-</section>
-<section id="oncosim-and-oncosimx" class="slide level2">
-<h2>OncoSim and OncoSimX</h2>
-<blockquote>
-<p>OncoSim is a free, web-based simulation tool that evaluates cancer control strategies. Combining data from the real world, expert opinion and the published literature, OncoSim projects health and economic outcomes, and attributes them to 19 risk factors, such as smoking and inadequate physical activity. It currently models four cancer sites (breast, colorectal, lung, and cervical) and related screening programs in detail, and provides high-level projections for 25 cancer sites</p>
-</blockquote>
-</section>
-<section id="first-hands-on-example-riskpaths" class="slide level2">
-<h2>First Hands-on Example: RiskPaths</h2>
+</ul></section><section id="first-hands-on-example-riskpaths" class="slide level2"><h2>First Hands-on Example: RiskPaths</h2>
 <blockquote>
 <p>Being a model for the study of childlessness, the main event of RiskPaths is the first pregnancy (which is always assumed to lead to birth). Pregnancy can occur at any point in time after the 15th birthday, with risks changing by both age and union status. The underlying statistical models are piecewise constant hazard regressions. With respect to fertility this implies the assumption of a constant pregnancy risk for a given age group and union status.</p>
 </blockquote>
 <ul>
 <li><a href="https://www.statcan.gc.ca/en/microsimulation/modgen/new/chap3/chap3-2#a1">RiskPaths: More Information</a></li>
+</ul></section><section id="first-hands-on-example-riskpaths-1" class="slide level2 smaller"><h2>First Hands-on Example: RiskPaths</h2>
+<ul>
+<li><p>There are 7 configurable parameters (tables)</p></li>
+<li>
+<p>Mortality</p>
+<ul>
+<li>
+<code>CanDie</code>: Can a person die? (Yes or No)</li>
+<li>
+<code>ProbMort</code>: Probability of death (by age)</li>
 </ul>
-</section>
-<section>
-<section id="hands-on-examples" class="title-slide slide level1 center">
-<h1><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M330.8 242.3L223.1 209.1C210.3 205.2 197 212.3 193.1 224.9C189.2 237.6 196.3 251 208.9 254.9L256 272H56.9c-11.61 0-22.25 7.844-24.44 19.24C29.51 306.6 41.19 320 56 320h128C188.4 320 192 323.6 192 328S188.4 336 184 336H24.9c-11.61 0-22.25 7.844-24.44 19.24C-2.49 370.6 9.193 384 24 384h160C188.4 384 192 387.6 192 392S188.4 400 184 400H56.9c-11.61 0-22.25 7.844-24.44 19.24C29.51 434.6 41.19 448 56 448h128C188.4 448 192 451.6 192 456S188.4 464 184 464H88.9c-11.61 0-22.25 7.844-24.44 19.24C61.51 498.6 73.19 512 88 512h208c66.28 0 120-53.73 120-120v-32.03C416 306.6 381.1 259.4 330.8 242.3zM197.1 179.5c5.986-2.148 12.32-3.482 18.98-3.482c5.508 0 10.99 .8105 16.5 2.471l16.11 4.975L227.7 117.2C224.2 106.2 213.6 98.39 202 99.74c-15.51 1.807-24.79 16.99-20.33 31.11L197.1 179.5zM487.1 144.5c-13.27 .0977-23.95 10.91-23.86 24.16l-2.082 50.04l-59.98-189.8c-3.496-11.07-14.18-18.86-25.71-17.51c-15.51 1.807-24.79 16.99-20.33 31.11l38.56 122.1c1.332 4.213-1.004 8.707-5.219 10.04c-4.213 1.332-8.707-1.004-10.04-5.217l-47.93-151.7c-3.496-11.07-14.18-18.86-25.71-17.51c-15.51 1.807-24.79 16.99-20.33 31.11l43.37 137.8c1.33 4.213-1.006 8.707-5.219 10.04c-4.213 1.332-8.707-1.004-10.04-5.217l-33.46-106.4C275.6 56.39 264.9 48.6 253.4 49.94c-15.51 1.807-24.79 16.99-20.33 31.11l34.15 108.1l73.7 22.76C404.1 233.3 448 292.8 448 359.9v27.91c38.27-21.17 63.28-61.24 64-106.7V168.4C511.8 155.1 500.3 144.5 487.1 144.5z"></path></svg> Hands-on Examples</h1>
-
-</section>
-<section id="acknowledgements" class="slide level2">
-<h2><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M96 191.1H32c-17.67 0-32 14.33-32 31.1v223.1c0 17.67 14.33 31.1 32 31.1h64c17.67 0 32-14.33 32-31.1V223.1C128 206.3 113.7 191.1 96 191.1zM512 227c0-36.89-30.05-66.92-66.97-66.92h-99.86C354.7 135.1 360 113.5 360 100.8c0-33.8-26.2-68.78-70.06-68.78c-46.61 0-59.36 32.44-69.61 58.5c-31.66 80.5-60.33 66.39-60.33 93.47c0 12.84 10.36 23.99 24.02 23.99c5.256 0 10.55-1.721 14.97-5.26c76.76-61.37 57.97-122.7 90.95-122.7c16.08 0 22.06 12.75 22.06 20.79c0 7.404-7.594 39.55-25.55 71.59c-2.046 3.646-3.066 7.686-3.066 11.72c0 13.92 11.43 23.1 24 23.1h137.6C455.5 208.1 464 216.6 464 227c0 9.809-7.766 18.03-17.67 18.71c-12.66 .8593-22.36 11.4-22.36 23.94c0 15.47 11.39 15.95 11.39 28.91c0 25.37-35.03 12.34-35.03 42.15c0 11.22 6.392 13.03 6.392 22.25c0 22.66-29.77 13.76-29.77 40.64c0 4.515 1.11 5.961 1.11 9.456c0 10.45-8.516 18.95-18.97 18.95h-52.53c-25.62 0-51.02-8.466-71.5-23.81l-36.66-27.51c-4.315-3.245-9.37-4.811-14.38-4.811c-13.85 0-24.03 11.38-24.03 24.04c0 7.287 3.312 14.42 9.596 19.13l36.67 27.52C235 468.1 270.6 480 306.6 480h52.53c35.33 0 64.36-27.49 66.8-62.2c17.77-12.23 28.83-32.51 28.83-54.83c0-3.046-.2187-6.107-.6406-9.122c17.84-12.15 29.28-32.58 29.28-55.28c0-5.311-.6406-10.54-1.875-15.64C499.9 270.1 512 250.2 512 227z"></path></svg> Acknowledgements</h2>
+</li>
+<li>
+<p>Fertility</p>
+<ul>
+<li>
+<code>AgeBaselinePreg1</code>: Risk for first pregnancy (by age)</li>
+<li>
+<code>UnionStatusPreg1</code>: Relative risk of union status on first pregnancy</li>
+</ul>
+</li>
+<li>
+<p>Unions</p>
+<ul>
+<li>
+<code>AgeBaselineForm1</code>: Risk for first union formation (by age)</li>
+<li>
+<code>UnionDurationBaseline</code>: Risk for union dissolution (by time)</li>
+<li>
+<code>SeparationDurationBaseline</code>: Risk for 2nd union formation</li>
+</ul>
+</li>
+<li><p>Women are assumed to stay single after the dissolution of a second union…</p></li>
+</ul>
+<div class="footer">
+<p><a href="https://www.statcan.gc.ca/en/microsimulation/modgen/new/chap3/chap3-2" class="uri">https://www.statcan.gc.ca/en/microsimulation/modgen/new/chap3/chap3-2</a></p>
+</div>
+</section></section><section><section id="hands-on-example" class="title-slide slide level1 center" data-background-color="#ffe57b"><h1>
+<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M154.9 162c.3 .7 .7 1.5 1.1 2.2l17.8 30.9c11.1-12.6 27.4-19.8 44.4-19.1l-20.7-35.8c-6.6-11.5-21.3-15.4-32.8-8.8c-10.8 6.2-14.9 19.5-9.9 30.6zm173.6 47C399.7 231.7 448 297.8 448 372.5c0 1.5 0 3-.1 4.5c39.7-25.6 64.1-69.7 64.1-117.4V136c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 81.7L347.8 16.5C341.2 5 326.5 1.1 315.1 7.7s-15.4 21.3-8.8 32.8l64 110.9c2.2 3.8 .9 8.7-2.9 10.9s-8.7 .9-10.9-2.9l-80-138.6C269.8 9.3 255.1 5.4 243.6 12s-15.4 21.3-8.8 32.8l80 138.6c2.2 3.8 .9 8.7-2.9 10.9s-8.7 .9-10.9-2.9L237 80.5c-6.6-11.5-21.3-15.4-32.8-8.8s-15.4 21.3-8.8 32.8l44 76.2L328.5 209zM64 488c0 12.4 9.4 22.6 21.5 23.9c.8 .1 1.6 .1 2.5 .1H288.7 296c66.3 0 120-53.7 120-120c0-1.2 0-2.4-.1-3.6c0-1.2 .1-2.5 .1-3.7c0-68-44-128.2-108.9-148.9l-83.9-26.7c-12.6-4-26.1 3-30.1 15.6s3 26.1 15.6 30.1L262.6 272H56c-13.3 0-24 10.7-24 24s10.7 24 24 24H184c4.4 0 8 3.6 8 8s-3.6 8-8 8H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H184c4.4 0 8 3.6 8 8s-3.6 8-8 8H56c-13.3 0-24 10.7-24 24s10.7 24 24 24H184c4.4 0 8 3.6 8 8s-3.6 8-8 8H88c-13.3 0-24 10.7-24 24z"></path></svg> Hands-on Example</h1>
+<p><strong>RiskPaths</strong>: A model for the study of childlessness</p>
+</section><section id="oncosim-and-oncosimx" class="slide level2"><h2>OncoSim and OncoSimX</h2>
+<blockquote>
+<p>OncoSim is a free, web-based simulation tool that evaluates cancer control strategies. Combining data from the real world, expert opinion and the published literature, OncoSim projects health and economic outcomes, and attributes them to 19 risk factors, such as smoking and inadequate physical activity. It currently models four cancer sites (breast, colorectal, lung, and cervical) and related screening programs in detail, and provides high-level projections for 25 cancer sites</p>
+</blockquote>
+</section><section id="second-hands-on-example-oncosim-allcancers" class="slide level2"><h2>Second Hands-on Example: OncoSim-AllCancers</h2>
+<blockquote>
+<p>The OncoSim-All Cancers Model projects the incidence, deaths and healthcare costs of 25 cancers in Canada and attributes them to various risk factors.</p>
+</blockquote>
+<h3 id="helpful-links">Helpful Links:</h3>
+<ul>
+<li><p><a href="https://www.partnershipagainstcancer.ca/tools/oncosim/fact-sheets/">OncoSim fact sheets</a></p></li>
+<li><p><a href="https://s22457.pcdn.co/wp-content/uploads/2022/10/OncoSim-All-Cancers-fact-sheet-2022-EN.pdf">OncoSim-All Cancers fact sheet</a></p></li>
+<li><p><a href="https://www.partnershipagainstcancer.ca/tools/oncosim/related-resources/#allcancers">OncoSim examples</a></p></li>
+</ul></section></section><section><section id="hands-on-example-1" class="title-slide slide level1 center" data-background-color="#ffe57b"><h1>
+<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M154.9 162c.3 .7 .7 1.5 1.1 2.2l17.8 30.9c11.1-12.6 27.4-19.8 44.4-19.1l-20.7-35.8c-6.6-11.5-21.3-15.4-32.8-8.8c-10.8 6.2-14.9 19.5-9.9 30.6zm173.6 47C399.7 231.7 448 297.8 448 372.5c0 1.5 0 3-.1 4.5c39.7-25.6 64.1-69.7 64.1-117.4V136c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 81.7L347.8 16.5C341.2 5 326.5 1.1 315.1 7.7s-15.4 21.3-8.8 32.8l64 110.9c2.2 3.8 .9 8.7-2.9 10.9s-8.7 .9-10.9-2.9l-80-138.6C269.8 9.3 255.1 5.4 243.6 12s-15.4 21.3-8.8 32.8l80 138.6c2.2 3.8 .9 8.7-2.9 10.9s-8.7 .9-10.9-2.9L237 80.5c-6.6-11.5-21.3-15.4-32.8-8.8s-15.4 21.3-8.8 32.8l44 76.2L328.5 209zM64 488c0 12.4 9.4 22.6 21.5 23.9c.8 .1 1.6 .1 2.5 .1H288.7 296c66.3 0 120-53.7 120-120c0-1.2 0-2.4-.1-3.6c0-1.2 .1-2.5 .1-3.7c0-68-44-128.2-108.9-148.9l-83.9-26.7c-12.6-4-26.1 3-30.1 15.6s3 26.1 15.6 30.1L262.6 272H56c-13.3 0-24 10.7-24 24s10.7 24 24 24H184c4.4 0 8 3.6 8 8s-3.6 8-8 8H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H184c4.4 0 8 3.6 8 8s-3.6 8-8 8H56c-13.3 0-24 10.7-24 24s10.7 24 24 24H184c4.4 0 8 3.6 8 8s-3.6 8-8 8H88c-13.3 0-24 10.7-24 24z"></path></svg> Hands-on Example</h1>
+<p><strong>OncoSim-All Cancers</strong>: Projects the incidence, deaths, and healthcare costs of 25 cancers in Canada</p>
+</section><section id="closing-remarks" class="slide level2"><h2>Closing remarks</h2>
+<ul>
+<li>We learned (hopefully):
+<ul>
+<li>OpenM++ microsimulation platform</li>
+<li>Brief introduction to APIs</li>
+<li>Communication with APIs from R</li>
+<li>Some advanced R techniques for real-time API connections</li>
+</ul>
+</li>
+<li>The goal of this workshop was to be <em>illustrative</em>, not <strong>prescriptive</strong>. If you choose to use OpenM++ for your miscrosimulation needs, hopefully this workshop provided <em>food for thought</em> about how best to interact with OpenM++ programmatically using R</li>
+</ul></section><section id="helpful-resources" class="slide level2"><h2>Helpful Resources</h2>
+<ul>
+<li><p><a href="https://httr2.r-lib.org/articles/wrapping-apis.html">Wrapping APIs with httr2</a></p></li>
+<li><p><a href="https://ropensci.org/blog/2022/06/16/publicize-api-client-yes-no/">Why You Should (or Shouldn’t) Build an API Client</a></p></li>
+<li><p><a href="https://r6.r-lib.org/articles/Introduction.html">Introduction to R6</a></p></li>
+<li><p><a href="https://openmpp.org/wiki/openmpp-wiki.html">OpenM++ Wiki</a></p></li>
+<li><p><a href="https://github.com/oncology-outcomes/oncosimx">oncosimx GitHub</a></p></li>
+</ul>
+<p>Please feel free to get in touch with me after the workshop at the following email address: <a href="mailto:matthew.warkentin@ucalgary.ca" class="email">matthew.warkentin@ucalgary.ca</a></p>
+</section><section id="acknowledgements" class="slide level2"><h2>
+<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M96 191.1H32c-17.67 0-32 14.33-32 31.1v223.1c0 17.67 14.33 31.1 32 31.1h64c17.67 0 32-14.33 32-31.1V223.1C128 206.3 113.7 191.1 96 191.1zM512 227c0-36.89-30.05-66.92-66.97-66.92h-99.86C354.7 135.1 360 113.5 360 100.8c0-33.8-26.2-68.78-70.06-68.78c-46.61 0-59.36 32.44-69.61 58.5c-31.66 80.5-60.33 66.39-60.33 93.47c0 12.84 10.36 23.99 24.02 23.99c5.256 0 10.55-1.721 14.97-5.26c76.76-61.37 57.97-122.7 90.95-122.7c16.08 0 22.06 12.75 22.06 20.79c0 7.404-7.594 39.55-25.55 71.59c-2.046 3.646-3.066 7.686-3.066 11.72c0 13.92 11.43 23.1 24 23.1h137.6C455.5 208.1 464 216.6 464 227c0 9.809-7.766 18.03-17.67 18.71c-12.66 .8593-22.36 11.4-22.36 23.94c0 15.47 11.39 15.95 11.39 28.91c0 25.37-35.03 12.34-35.03 42.15c0 11.22 6.392 13.03 6.392 22.25c0 22.66-29.77 13.76-29.77 40.64c0 4.515 1.11 5.961 1.11 9.456c0 10.45-8.516 18.95-18.97 18.95h-52.53c-25.62 0-51.02-8.466-71.5-23.81l-36.66-27.51c-4.315-3.245-9.37-4.811-14.38-4.811c-13.85 0-24.03 11.38-24.03 24.04c0 7.287 3.312 14.42 9.596 19.13l36.67 27.52C235 468.1 270.6 480 306.6 480h52.53c35.33 0 64.36-27.49 66.8-62.2c17.77-12.23 28.83-32.51 28.83-54.83c0-3.046-.2187-6.107-.6406-9.122c17.84-12.15 29.28-32.58 29.28-55.28c0-5.311-.6406-10.54-1.875-15.64C499.9 270.1 512 250.2 512 227z"></path></svg> Acknowledgements</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><strong>OpenM++</strong>
+<li>
+<strong>OpenM++</strong>
 <ul>
 <li>Steve Gribble</li>
 <li>Anatoly Cherkassky</li>
-</ul></li>
-<li><strong>Statistics Canada</strong>
+</ul>
+</li>
+<li>
+<strong>Statistics Canada</strong>
 <ul>
-<li>Michael Wolfson</li>
+<li>Michael C. Wolfson</li>
 <li>Rochelle Garner</li>
-</ul></li>
-<li><strong>CPAC</strong>
+</ul>
+</li>
+<li>
+<strong>CPAC</strong>
 <ul>
 <li>Jean Yong</li>
 <li>Roxanne Garaszczuk</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
-<li><strong>Brenner Lab</strong>
+<li>
+<strong>Brenner Lab/U of C</strong>
 <ul>
-<li>Darren Brenner</li>
+<li>Darren R. Brenner</li>
 <li>John Hutchinson</li>
 <li>Yibing Ruan</li>
 <li>Rob Basmadjian</li>
 <li>Mariet Stephen</li>
 <li>Keaton Banik</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -763,26 +1084,10 @@ Coefficients:
 
 </div>
 </section></section>
-    </div>
+</div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="ROpenM_Workshop_Slides_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/notes/notes.js"></script><script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/search/search.js"></script><script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="ROpenM_Workshop_Slides_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -973,9 +1278,7 @@ Coefficients:
           RevealZoom
         ]
       });
-    </script>
-    
-    <script>
+    </script><script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -1010,9 +1313,7 @@ Coefficients:
         }
 
       })();
-    </script>
-
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1158,6 +1459,6 @@ Coefficients:
       }
     });
     </script>
-    
+
 
 </body></html>

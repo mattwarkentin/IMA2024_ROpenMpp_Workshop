@@ -9,6 +9,10 @@ format:
     theme: [default, custom.scss]
     title-slide-attributes: 
       data-background-color: '#ffcd00'
+    code-link: true
+    code-line-numbers: false
+    self-contained: false
+engine: knitr
 execute: 
   echo: true
   warning: false
@@ -37,6 +41,11 @@ library(htmltools)
     + PhD, Molecular Epidemiology, University of Toronto
     + Postdoc, Dept. of Oncology, University of Calgary
 
+## Disclosures
+
+- None to declare
+    + I do not/have not received any financial compensation from OpenM++
+
 ## `r fa('broom')` Housekeeping
 
 - Active workshop participants should have been provided a __user name__ and __login__ to connect to the cloud instance of OpenM++
@@ -53,105 +62,214 @@ library(htmltools)
 2. Introduction to the OpenM++ API
 
 3. Wrapping an API in R
+    + Including some tricks-of-the-trade
 
-4. Introduction to `oncosimx`
+4. Introduction to `{oncosimx}`
 
 5. Hands-on examples
+    + RiskPaths: Childlessness model 
+    + OncoSimX-allcancers: Cancer model
 
 6. Concluding remarks
 
+## What I hope to achieve?
+
+1. Provide contextual background information on the history, design considerations, and features of OpenM++
+
+1. Provide insights into how the OpenM++ API works and how it can work for YOU
+
+1. Provide some _"tricks of the trade"_ for how to effectively wrap stateful APIs into seamless R packages
+
+1. Provide some _"hands on"_ examples of how this looks and feels when it all comes together
+
+# Brief history of OpenM++
+
+Michael C. Wolfson, PhD
+
+University of Ottawa
+
 ## What is OpenM++
 
-> OpenM++ is an open source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop simple or complex models.
+> OpenM++ is an open-source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop simple or complex models.
 
 - Primarily written in C and C++
 
 - Can install and run on Mac, Windows, and Linux
 
-- Heir apparent to Modgen
+- _Heir apparent_ to __Modgen__
     + The OpenM++ language is based on the Modgen language developed at Statistics Canada. With minor modifications to model source code...
+
+## Why supercede Modgen?
+
+- Add some brief points here to provide context...
+
+- [Introduction to Modgen](https://www.statcan.gc.ca/en/microsimulation/modgen/new/introduction/introduction)
+    + For the interested reader...
 
 ## Why OpenM++: General features
 
-- open source: OpenM++ and all components are licensed under the very broad MIT license.
+- __Open source__: OpenM++ and all components are licensed under the very broad MIT license
 
-- cross-platform: Model development and use on Windows, Linux, or MacOS.
+- __Cross-platform__: Model development and use on Windows, Linux, or MacOS
 
-- standards-based: Uses industry standard formats and technologies.
+- __Standards-based__: Uses industry standard formats and technologies
 
-- zero-footprint: File-based installation requires no elevation of privileges.
+- __Zero-footprint__: File-based installation requires no elevation of privileges
+
+::: footer
+`r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
+:::
 
 ## Why OpenM++: Model developer features
 
-- high-level language: Model types, parameters, entities, events, tables, etc. are specified using a compact domain-specific language targeted to microsimulation.
+- __High-level language__: Model types, parameters, entities, events, tables, etc. are specified using a compact domain-specific language targeted to microsimulation
 
-- scalable complexity: From simple 'toy' models to highly complex models.
+- __Scalable complexity__: From simple 'toy' models to highly complex models
 
-- modularity: New events and processes can be added to a model in a new module, often with little or no modification to existing modules.
-continuous or discrete time, or a mixture.
+- __Modularity__: New events and processes can be added to a model in a new module, often with little or no modification to existing modules.
+continuous or discrete time, or a mixture
 
-- supports multiple versions: Multiple OpenM++ versions can be installed and a single environment variable used to choose among them.
+::: footer
+`r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
+:::
 
-- result compare: Supports rapid comparison of all model outputs during incremental model development.
+## Why OpenM++: Model developer features
+
+- __Supports multiple versions__: Multiple OpenM++ versions can be installed and a single environment variable used to choose among them
+
+- __Result compare__: Supports rapid comparison of all model outputs during incremental model development
+
+::: footer
+`r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
+:::
 
 ## Why OpenM++: Computational features
 
-- scalable computation: Designed to scale linearly with population size or replicates when possible, N log N scaling for typical interacting populations.
+- __Scalable computation__: Designed to scale linearly with population size or replicates when possible, N log N scaling for typical interacting populations
 
-- grid-enabled, cloud-enabled: Supports MPI for multi-processing to distribute execution of replicates to a small or large computational grid or to the cloud, with automatic result assembly.
+- __Grid-enabled, cloud-enabled__: Supports MPI for multi-processing to distribute execution of replicates to a small or large computational grid or to the cloud, with automatic result assembly
 
-- multi-threaded: Supports multi-threading for parallel execution of replicates on desktop or server.
+- __Multi-threaded__: Supports multi-threading for parallel execution of replicates on desktop or server
 
-- on-the-fly tabulation: Tables are computed during the simulation, eliminating the need to output voluminous microdata for subsequent tabulation.
+::: footer
+`r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
+:::
 
-- computationally efficient: The model specification is transformed to C++ which is processed by an optimizing C++ compiler to produce a highly efficient executable program.
+## Why OpenM++: Computational features
+
+- __On-the-fly tabulation__: Tables are computed during the simulation, eliminating the need to output voluminous microdata for subsequent tabulation
+
+- __Computationally efficient__: The model specification is transformed to C++ which is processed by an optimizing C++ compiler to produce a highly efficient executable program
+
+::: footer
+`r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
+:::
 
 ## Why OpenM++: Usability features
 
-- generated UI: A model-specific UI is generated from the model specification.
+- __Generated UI__: A model-specific UI is generated from the model specification
 
-- browser-based UI: The UI requires only a browser, and runs on almost any modern browser.
+- __Browser-based UI__: The UI requires only a browser, and runs on almost any modern browser
 
-- cloud-enabled: Models can be deployed to a cloud and accessed remotely over the web, from a browser.
+- __Cloud-enabled__: Models can be deployed to a cloud and accessed remotely over the web, from a browser
 
-- multilingual support: For UI and for model, with real-time language switching
+- __Multilingual support__: For UI and for model, with real-time language switching
+
+::: footer
+`r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
+:::
 
 ## Why OpenM++: Analyst features
 
-- continuous time tabulation: Powerful but easy to use language constructs to tabulate time-in-state, empirical hazards, transitions counts, state changes, etc.
+- __Continuous time tabulation__: Powerful but easy to use language constructs to tabulate time-in-state, empirical hazards, transitions counts, state changes, etc.
 
-- replicate support: All tables can have underlying replicate simulations to assess the uncertainty of any cell of any output table. Statistical measures of uncertainty are computed for all cells of all tables.
+- __Replicate support__: All tables can have underlying replicate simulations to assess the uncertainty of any cell of any output table. Statistical measures of uncertainty are computed for all cells of all tables
 
-- automation: Models can be controlled by scripts, eg Python or R.
+- __Automation__: Models can be controlled by scripts, _e.g._, Python or R
 
-- import/export: Models and runs can be moved between databases, or to standard formats for upstream preparation of inputs or for downstream analysis of outputs.
+::: footer
+`r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
+:::
 
-- dynamic run control: A computational grid can process runs dynamically to enable whole-model estimation or calibration, with a controlling script reading run results and preparing new runs for execution.
+## Why OpenM++: Analyst features
+
+- __Import/export__: Models and runs can be moved between databases, or to standard formats for upstream preparation of inputs or for downstream analysis of outputs
+
+- __Dynamic run control__: A computational grid can process runs dynamically to enable whole-model estimation or calibration, with a controlling script reading run results and preparing new runs for execution
+
+::: footer
+`r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
+:::
 
 ## OpenM++: Workshop focus
 
 - This workshop will primarily focus on the "analysts" perspective for what the benefits are of using OpenM++
 
+__OpenM++: Analyst features:__
+
 > Automation: Models can be controlled by scripts, e.g., Python or R.
 
-- How? Why?
+- How can we do this? 
+
+- Why would we do this?
+
+- What are the benefits?
+
+## The setup
+
+- You developed a microsimulation model in OpenM++. You can control the simulation using several (or many many) parameters and run the simulation to get output tables.
+    + I come from the oncology world, so my models are cancer-focused, but yours might be finance, pensions, taxes, etc.
+
+- You are like me, in that you __DO NOT__ like using graphical user interfaces (GUI) to configure and run models, because:
+    + Lacks transparency
+    + Lacks reproducibility
+    + Does not scale well
 
 ## OpenM++ API
 
-> The model API provides programmatic access to scenario management, model inputs, model runs, and model outputs. It is implemented by the OpenM++ oms web service, which uses standard JSON to communicate with a controlling application.
+> The [OpenM++] model API provides programmatic access to scenario management, model inputs, model runs, and model outputs. It is implemented by the OpenM++ oms web service, which uses standard JSON to communicate with a controlling application.
 
-- [API Documentation](https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API)
+`r fa('link')` [API Documentation](https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API)
 
-## What is an API?
+- The OpenM++ API has over 100 endpoints for querying, setting, and deleting data
 
-- Stands for "Application Programming Interface"
+```{r echo=FALSE, eval=FALSE}
+library(rvest)
+read_html('https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API') |> 
+  html_elements('h4') |> 
+  map_chr(html_text) |> 
+  enframe(NULL, 'endpoint') |> 
+  filter(str_detect(endpoint, 'GET|PUT|POST|PATCH|DELETE')) |> 
+  distinct(endpoint) |> 
+  separate_wider_regex(endpoint, c('method' = '[[:upper:]]+', 'endpoint' = '.*')) |> 
+  mutate(
+    endpoint = str_remove(endpoint, '\\(.*\\)'),
+    across(everything(), str_squish),
+    endpoint = str_to_sentence(endpoint)
+  ) |> 
+  reactable::reactable(
+    groupBy = 'method'
+  )
+```
+
+## But, what is an API?
+
+- Stands for _"Application Programming Interface"_
     + Is that helpful?
     
-- In simple terms, it is a software for allowing two applications to _"talk"_ to each other
+- In simple terms, it is a software for allowing two applications to _"communicate"_ with each other
 
-- The communication occurs using a well-defined and structured language
+- The communication occurs using a well-defined and structured language (_i.e._, send requests, receive responses)
 
-- Most modern API conform to "REST" standards (i.e., a RESTful API)
+- Most modern APIs conform to so-called "__REST__" standards (_i.e._, a RESTful API)
+
+## API Schematic
+
+![](assets/diagram-what-is-an-api-postman-illustration.svg)
+
+::: footer
+<https://www.postman.com/what-is-an-api/>
+:::
 
 ## What is a RESTful API?
 
@@ -175,7 +293,36 @@ continuous or discrete time, or a mixture.
 
 - __PATCH:__ partially updates a specified resource
 
-## Simple R API
+## Building an API request in R
+
+We will utilize the `httr2` package...
+
+```{r}
+library(httr2)
+```
+
+```r
+resp <- 
+  request('url goes here...') |> 
+  req_method('GET') |>
+  req_perform()
+```
+
+```r
+resp_status(resp)
+resp_status_desc(resp)
+resp_body_json(resp)
+```
+
+- Request methods are prefixed with `req_*`
+
+- Response methods are prefixed with `resp_*`
+
+::: footer
+<https://httr2.r-lib.org>
+:::
+
+## Simple R API: Motivational Quotes
 
 Let's do a simple example in R using the `{httr2}` package...
 
@@ -185,13 +332,29 @@ library(httr2)
 resp <- 
   request("https://zenquotes.io/api/quotes") |> 
   req_method('GET') |>
-  req_perform() |> 
-  resp_body_json()
+  req_perform() 
 
-resp[[1]]$q
+resp_status(resp)
+resp_status_desc(resp)
 ```
 
-## Simple R API
+## Simple R API: Motivational Quotes
+
+```{r message=TRUE}
+print(resp)
+```
+
+```{r}
+quotes <- resp_body_json(resp)
+
+quotes[[1]]$q
+```
+
+```{r}
+quotes[[2]]$q
+```
+
+## Simple R API: Motivational Quotes
 
 But even the previous example is a bit verbose for repeated use. Let's wrap this into a function.
 
@@ -208,6 +371,22 @@ get_quote <- function() {
 get_quote()
 ```
 
+# __Basic idea__: obfuscate the technical debt for making API requests in R into modular user-friendly functions {background-color='#ffa300'}
+
+## A rich history of wrapping APIs...
+
+![](assets/imports.png)
+
+# Quick Recap
+
+- We have briefly learned what APIs are and how we communicate with them
+
+- We have learned how to wrap simple API requests into reusable R functions
+
+- Next, we will step up in complexity to learn some more advanced techniques for wrapping APIs (e.g., OpenM++) that allow more sophisticated communications
+
+# `r fa('r-project')` R Tricks-of-the-trade
+
 ## Object-oriented (OO) approach
 
 - Traditionally, R uses the `S3` object-oriented system which is __functional__ by design
@@ -219,6 +398,16 @@ get_quote()
 - Other languages (_e.g._, Python) use an encapsulated OO approach
 
    + Objects ARE instances of a class definition and methods/attributes BELONG to classes
+
+## When to use S3? Basically always...
+
+> S3 is R’s first and simplest OO system. S3 is informal and ad hoc, but there is a certain elegance in its minimalism: you can’t take away any part of it and still have a useful OO system. __For these reasons, you should use it, unless you have a compelling reason to do otherwise.__
+
+- I think communicating with a stateful API connected to a database is a compelling reason
+
+::: footer
+<https://adv-r.hadley.nz/s3.html#introduction-12>
+:::
 
 ## S3 OOS
 
@@ -238,14 +427,36 @@ print
 ## S3 OOS
 
 ```{r echo=TRUE}
-#| code-fold: true
 print(mtcars)
 ```
 
 ```{r echo=TRUE}
-#| code-fold: true
 print(lm(mpg ~ hp, mtcars))
 ```
+
+## R6 versus S3
+
+From Advanced R (2e) by Hadley Wickham
+
+- R6 is a profoundly different OO system from S3 and S4 because it is built on encapsulated objects, rather than generic functions. Additionally R6 objects have reference semantics, which means that they can be modified in place. These two big differences have a number of non-obvious consequences which we’ll explore here:
+
+- A generic is a regular function so it lives in the global namespace. An R6 method belongs to an object so it lives in a local namespace. This influences how we think about naming.
+
+::: footer
+<https://adv-r.hadley.nz/oo-tradeoffs.html#s3-r6>
+:::
+
+## R6 Encapsulated OOS
+
+From Advanced R (2e) by Hadley Wickham
+
+- R6’s reference semantics allow methods to simultaneously return a value and modify an object. This solves a painful problem called “threading state”.
+
+- You invoke an R6 method using `$`, which is an infix operator. If you set up your methods correctly you can use chains of method calls as an alternative to the pipe.
+
+::: footer
+<https://adv-r.hadley.nz/oo-tradeoffs.html#s3-r6>
+:::
 
 ## R6 Encapsulated OOS
 
@@ -263,6 +474,122 @@ Compared to...
 object$action()
 object$field
 ```
+
+::: footer
+<https://r6.r-lib.org/index.html>
+:::
+
+## Dog example: S3 Approach
+
+```{r}
+bucky <- structure(
+  list(
+    name = 'bucky',
+    noise = 'bark',
+    species = 'dog'
+  ),
+  class = 'Dog'
+)
+```
+
+```{r}
+# New S3 method
+print.Dog <- function(x) {
+  cat(x$noise)
+}
+```
+
+```{r}
+print(bucky)
+```
+
+## Dog example: R6 approach
+
+```{r}
+library(R6)
+```
+
+```{r}
+Dog <-
+  R6Class(
+    classname = 'Dog',
+    public = list(
+      name = NULL,
+      species = 'dog',
+      initialize = function(name) {
+        self$name <- name
+      },
+      make_noise = function() cat('bark')
+    )
+  )
+```
+
+## Dog example: R6 approach
+
+```{r}
+bucky <- Dog$new('Bucky')
+bucky
+```
+
+```{r}
+bucky$species
+```
+
+```{r}
+bucky$make_noise()
+```
+
+- With R6 OOS, attributes and methods BELONG to an object
+
+## Active Bindings
+
+> `makeActiveBinding()` installs `fun` in environment `env` so that getting the value of `sym` calls fun with no arguments, and assigning to `sym` calls `fun` with one argument, the value to be assigned. This allows the implementation of things like `C` variables linked to `R` variables and variables linked to databases
+
+- Active bindings are a first-class feature in R6, so we typically don't use `makeActiveBinding` directly...
+
+## Active Bindings
+
+- That isn't a very clear definition, let me try...
+
+- Active bindings __LOOK__ like standard R objects in your global/local environment, but:
+    + When you __ACCESS__ the objects value it actually runs a function in the background
+    + When you __ASSIGN__ to the object it runs a function with the assigned value as its only argument (_optionally_)
+
+- __NOTE:__ Active bindings should be used sparingly, if at all. They are hard to reason about using standard R logic and should be avoided unless absolutely necessary
+
+## Active Bindings
+
+```{r}
+f <- function(x) {
+  if (missing(x)) return(cat('This runs'))
+  cat('Or this runs...')
+}
+
+makeActiveBinding('example_binding', f, .GlobalEnv)
+```
+
+```{r}
+example_binding
+```
+
+```{r}
+example_binding <- 100
+```
+
+## How does this help us?
+
+- This feature is useful because our models/data live in a database and so it allows us to create bindings that always run functions in the background to communicate and stay _up-to-date_ with the server (i.e., OpenM++)
+
+- Example: when a user tries to access an output table, a function is ran to retrieve the table in real-time to ensure it is accurate and up-to-date
+
+```r
+# Real-time communication with API behind-the-scenes
+model_run$important_table
+```
+
+# Example: `oncosimx` R package
+
+Programmatic interface to OpenM++ and OncoSimX
 
 ## Main Classes
 
@@ -287,19 +614,19 @@ object$field
 
 - `delete_scenario()` / `delete_workset()`, `delete_run()`
 
+Each of these functions is an API request to OpenM++ wrapped into a friendly helper function...
+
+# {#schematic-id}
+
+![](assets/illustrations/illustrations.001.jpeg){fig-align="center"}
+
 ## Design Considerations
 
-- This is an _opinionated_ framework for programmatically interfacing with OpenM++ and the web-based interface to OncoSimX
+- This is an _opinionated_ framework for programmatically interfacing with OpenM++ and the cloud-based interface to OncoSimX
 
 - Design principle: abstract away the technical debt associated with calling APIs from R; from the users perspective, it should _look and feel_ like a normal R package
 
 - Trying to achieve feature parity with the GUI
-
-- This package is very much in __beta__ phase of development and is liable to change and I am seeking any and all feedback to improve the package
-
-## OncoSim and OncoSimX
-
-> OncoSim is a free, web-based simulation tool that evaluates cancer control strategies. Combining data from the real world, expert opinion and the published literature, OncoSim projects health and economic outcomes, and attributes them to 19 risk factors, such as smoking and inadequate physical activity. It currently models four cancer sites (breast, colorectal, lung, and cervical) and related screening programs in detail, and provides high-level projections for 25 cancer sites
 
 ## First Hands-on Example: RiskPaths
 
@@ -307,7 +634,76 @@ object$field
 
 - [RiskPaths: More Information](https://www.statcan.gc.ca/en/microsimulation/modgen/new/chap3/chap3-2#a1)
 
-# `r fa('hands')` Hands-on Examples
+## First Hands-on Example: RiskPaths {.smaller}
+
+- There are 7 configurable parameters (tables)
+
+- Mortality
+    + `CanDie`: Can a person die? (Yes or No)
+    + `ProbMort`: Probability of death (by age)
+
+- Fertility
+    + `AgeBaselinePreg1`: Risk for first pregnancy (by age)
+    + `UnionStatusPreg1`: Relative risk of union status on first pregnancy
+    
+- Unions
+    + `AgeBaselineForm1`: Risk for first union formation (by age)
+    + `UnionDurationBaseline`: Risk for union dissolution (by time)
+    + `SeparationDurationBaseline`: Risk for 2nd union formation
+  
+- Women are assumed to stay single after the dissolution of a second union...
+
+::: footer
+<https://www.statcan.gc.ca/en/microsimulation/modgen/new/chap3/chap3-2>
+:::
+
+# `r fa('hands')` Hands-on Example {background-color='#ffe57b'}
+
+__RiskPaths__: A model for the study of childlessness
+
+## OncoSim and OncoSimX
+
+> OncoSim is a free, web-based simulation tool that evaluates cancer control strategies. Combining data from the real world, expert opinion and the published literature, OncoSim projects health and economic outcomes, and attributes them to 19 risk factors, such as smoking and inadequate physical activity. It currently models four cancer sites (breast, colorectal, lung, and cervical) and related screening programs in detail, and provides high-level projections for 25 cancer sites
+
+## Second Hands-on Example: OncoSim-AllCancers
+
+> The OncoSim-All Cancers Model projects the incidence, deaths and healthcare costs of 25 cancers in Canada and attributes them to various risk factors.
+
+### Helpful Links:
+
+- [OncoSim fact sheets](https://www.partnershipagainstcancer.ca/tools/oncosim/fact-sheets/)
+
+- [OncoSim-All Cancers fact sheet](https://s22457.pcdn.co/wp-content/uploads/2022/10/OncoSim-All-Cancers-fact-sheet-2022-EN.pdf)
+
+- [OncoSim examples](https://www.partnershipagainstcancer.ca/tools/oncosim/related-resources/#allcancers)
+
+# `r fa('hands')` Hands-on Example {background-color='#ffe57b'}
+
+__OncoSim-All Cancers__: Projects the incidence, deaths, and healthcare costs of 25 cancers in Canada
+
+## Closing remarks
+
+- We learned (hopefully):
+    + OpenM++ microsimulation platform
+    + Brief introduction to APIs
+    + Communication with APIs from R
+    + Some advanced R techniques for real-time API connections
+
+- The goal of this workshop was to be _illustrative_, not __prescriptive__. If you choose to use OpenM++ for your miscrosimulation needs, hopefully this workshop provided _food for thought_ about how best to interact with OpenM++ programmatically using R
+
+## Helpful Resources
+
+- [Wrapping APIs with httr2](https://httr2.r-lib.org/articles/wrapping-apis.html)
+
+- [Why You Should (or Shouldn’t) Build an API Client](https://ropensci.org/blog/2022/06/16/publicize-api-client-yes-no/)
+
+- [Introduction to R6](https://r6.r-lib.org/articles/Introduction.html)
+
+- [OpenM++ Wiki](https://openmpp.org/wiki/openmpp-wiki.html)
+
+- [oncosimx GitHub](https://github.com/oncology-outcomes/oncosimx)
+
+Please feel free to get in touch with me after the workshop at the following email address: <matthew.warkentin@ucalgary.ca>
 
 ## `r fa('far fa-thumbs-up')` Acknowledgements
 
@@ -319,7 +715,7 @@ object$field
     + Anatoly Cherkassky
 
 - __Statistics Canada__
-    + Michael Wolfson
+    + Michael C. Wolfson
     + Rochelle Garner
 
 - __CPAC__
@@ -328,8 +724,8 @@ object$field
 :::
 
 ::: {.column width="50%"}
-- __Brenner Lab__
-    + Darren Brenner
+- __Brenner Lab/U of C__
+    + Darren R. Brenner
     + John Hutchinson
     + Yibing Ruan
     + Rob Basmadjian

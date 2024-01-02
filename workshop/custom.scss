@@ -17,7 +17,6 @@ $presentation-heading-font: 'Montserrat';
 
 $code-block-font-size: 0.75em;
 $code-block-bg: #FAFAFA;
-$code-block-border-color: #000000;
 
 $code-color: #3b3b3b;
 $code-bg: #EBEBEB;
@@ -30,4 +29,12 @@ $code-bg: #EBEBEB;
 
 a:link {
   text-decoration: underline;
+}
+
+.reveal div.sourceCode {
+  margin: 0 0 10px 0 !important;
+}
+
+.reveal div.cell-output pre code:before {
+  content: '> ';
 }
