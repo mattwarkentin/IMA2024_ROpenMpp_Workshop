@@ -12,6 +12,7 @@ format:
     code-link: true
     code-line-numbers: false
     self-contained: false
+    slide-number: c/t
 engine: knitr
 execute: 
   echo: true
