@@ -11,7 +11,7 @@ In this hands-on session we plan to cover:
 -	How to use R to wrap the OpenM++ API
 -	Some tricks-of-the-trade for using R to wrap APIs (e.g., R6 OOP, active bindings)
 -	Introduction to the oncosimx R package
--	Hands-on examples for configuring and running large and small microsimulation ,odels using R/OpenM++
+-	Hands-on examples for configuring and running large and small microsimulation models using R/OpenM++
 -	An introduction to the OncoSim suite of microsimulation models
 -	Examples running large-scale population-based Canadian microsimulation disease models
 -	Data exploration and visualization using R and the tidyverse
