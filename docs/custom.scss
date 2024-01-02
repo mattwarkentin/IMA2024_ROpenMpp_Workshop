@@ -38,3 +38,10 @@ a:link {
 .reveal div.cell-output pre code:before {
   content: '> ';
 }
+
+.reveal div.slide-number a {
+  opacity: 50%;
+  text-decoration: none;
+  color: black;
+  font-size: 0.9em;
+}
