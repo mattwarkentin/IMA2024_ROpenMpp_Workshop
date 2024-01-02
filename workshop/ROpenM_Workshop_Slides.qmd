@@ -5,7 +5,7 @@ author: "Matt Warkentin, PhD (<matthew.warkentin@ucalgary.ca>)"
 date: 2024-01-08
 format: 
   revealjs:
-    logo: UC-vert-rgb.png
+    logo: assets/UC-vert-rgb.png
     theme: [default, custom.scss]
     title-slide-attributes: 
       data-background-color: '#ffcd00'
