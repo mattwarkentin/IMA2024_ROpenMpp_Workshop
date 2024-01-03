@@ -475,7 +475,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <li><p>Provide insights into how the OpenM++ API works and how it can work for YOU</p></li>
 <li><p>Provide some <em>“tricks of the trade”</em> for how to effectively wrap stateful APIs into seamless R packages</p></li>
 <li><p>Provide some <em>“hands on”</em> examples of how this looks and feels when it all comes together</p></li>
-</ol></section><section><section id="brief-history-of-openm" class="title-slide slide level1 center"><h1>Brief history of OpenM++</h1>
+</ol></section><section><section id="brief-history-of-openm" class="title-slide slide level1 center" data-background-color="#ffe57b"><h1>Brief history of OpenM++</h1>
 
 </section><section id="what-is-openm" class="slide level2"><h2>What is OpenM++</h2>
 <blockquote>
@@ -700,7 +700,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <pre><code>Content-Type: application/json</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Body: In memory (12643 bytes)</code></pre>
+<pre><code>Body: In memory (12633 bytes)</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -708,13 +708,13 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <span></span>
 <span><span class="va">quotes</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "If you genuinely want something, don't wait for it - teach yourself."</code></pre>
+<pre><code>[1] "No man is happy who does not think himself so."</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">quotes</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Trust is the foundation of great leadership."</code></pre>
+<pre><code>[1] "As you love yourself, life loves you back."</code></pre>
 </div>
 </div>
 </section><section id="simple-r-api-motivational-quotes-2" class="slide level2"><h2>Simple R API: Motivational Quotes</h2>
@@ -731,7 +731,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <span></span>
 <span><span class="fu">get_quote</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Don't be afraid that you do not know something. Be afraid of not learning about it."</code></pre>
+<pre><code>[1] "Many have died; you also will die. The drum of death is being beaten. The world has fallen in love with a dream. Only sayings of the wise will remain."</code></pre>
 </div>
 </div>
 </section></section><section><section id="basic-idea-obfuscate-the-technical-debt-for-making-api-requests-in-r-into-modular-user-friendly-functions" class="title-slide slide level1 center" data-background-color="#ffa300"><h1>
@@ -784,7 +784,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 </details><div class="cell-output cell-output-stdout">
 <pre><code>function (x, ...) 
 UseMethod("print")
-&lt;bytecode: 0x107094c78&gt;
+&lt;bytecode: 0x1461bfc78&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>
@@ -843,7 +843,7 @@ Coefficients:
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bucky</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
-<span>    name <span class="op">=</span> <span class="st">'bucky'</span>,</span>
+<span>    name <span class="op">=</span> <span class="st">'Bucky'</span>,</span>
 <span>    noise <span class="op">=</span> <span class="st">'bark'</span>,</span>
 <span>    species <span class="op">=</span> <span class="st">'dog'</span></span>
 <span>  <span class="op">)</span>,</span>
@@ -851,7 +851,7 @@ Coefficients:
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># New S3 method</span></span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># New S3 method for `print()`</span></span>
 <span><span class="va">print.Dog</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">noise</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -867,7 +867,8 @@ Coefficients:
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r6.r-lib.org">R6</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Dog</span> <span class="op">&lt;-</span></span>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create an abstract Dog class</span></span>
+<span><span class="va">Dog</span> <span class="op">&lt;-</span></span>
 <span>  <span class="kw"><a href="https://r6.r-lib.org/reference/R6Class.html">R6Class</a></span><span class="op">(</span></span>
 <span>    classname <span class="op">=</span> <span class="st">'Dog'</span>,</span>
 <span>    public <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
@@ -901,13 +902,13 @@ Coefficients:
 <li>With R6 OOS, attributes and methods BELONG to an object</li>
 </ul></section><section id="active-bindings" class="slide level2"><h2>Active Bindings</h2>
 <blockquote>
-<p><code><a href="https://rdrr.io/r/base/bindenv.html">makeActiveBinding()</a></code> installs <code>fun</code> in environment <code>env</code> so that getting the value of <code>sym</code> calls fun with no arguments, and assigning to <code>sym</code> calls <code>fun</code> with one argument, the value to be assigned. This allows the implementation of things like <code>C</code> variables linked to <code>R</code> variables and variables linked to databases</p>
+<p><code><a href="https://rdrr.io/r/base/bindenv.html">makeActiveBinding()</a></code> installs <code>fun</code> in environment <code>env</code> so that getting the value of <code>sym</code> calls <code>fun</code> with no arguments, and assigning to <code>sym</code> calls <code>fun</code> with one argument, the value to be assigned. This allows the implementation of things like <code>C</code> variables linked to <code>R</code> variables and variables linked to databases</p>
 </blockquote>
 <ul>
 <li>Active bindings are a first-class feature in R6, so we typically don’t use <code>makeActiveBinding</code> directly…</li>
 </ul></section><section id="active-bindings-1" class="slide level2"><h2>Active Bindings</h2>
 <ul>
-<li><p>That isn’t a very clear definition, let me try…</p></li>
+<li><p>That isn’t a very clear definition, so let me try…</p></li>
 <li>
 <p>Active bindings <strong>LOOK</strong> like standard R objects in your global/local environment, but:</p>
 <ul>
@@ -980,8 +981,8 @@ Coefficients:
 
 <img data-src="assets/illustrations/illustrations.001.jpeg" class="r-stretch quarto-figure-center"></section><section id="design-considerations" class="slide level2"><h2>Design Considerations</h2>
 <ul>
-<li><p>This is an <em>opinionated</em> framework for programmatically interfacing with OpenM++ and the cloud-based interface to OncoSimX models</p></li>
-<li><p><strong>Design principle</strong>: abstract away the technical debt associated with calling APIs from R; from the users perspective, it should <em>look and feel</em> like a normal R package</p></li>
+<li><p>This is an <em>opinionated</em> framework for programmatically interfacing with the OpenM++ API and the cloud-based OncoSimX models</p></li>
+<li><p><strong>Design principle</strong>: abstract away the technical debt associated with calling the OpenM++ API from R; from the users perspective, it should <em>look and feel</em> like a <em>“normal”</em> R package</p></li>
 <li><p>Trying to achieve feature parity with the GUI</p></li>
 </ul></section><section id="first-hands-on-example-riskpaths" class="slide level2"><h2>First Hands-on Example: RiskPaths</h2>
 <blockquote>
@@ -1051,7 +1052,7 @@ Coefficients:
 <ul>
 <li>OpenM++ microsimulation platform</li>
 <li>Brief introduction to APIs</li>
-<li>Communication with APIs from R</li>
+<li>Communication with OpenM++ API from R</li>
 <li>Some advanced R techniques for real-time API connections</li>
 </ul>
 </li>

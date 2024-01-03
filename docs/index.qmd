@@ -101,7 +101,7 @@ library(htmltools)
 
 1. Provide some _"hands on"_ examples of how this looks and feels when it all comes together
 
-# Brief history of OpenM++
+# Brief history of OpenM++ {background-color='#ffe57b'}
 
 ## What is OpenM++
 
@@ -513,7 +513,7 @@ object$field
 ```{r}
 bucky <- structure(
   list(
-    name = 'bucky',
+    name = 'Bucky',
     noise = 'bark',
     species = 'dog'
   ),
@@ -522,7 +522,7 @@ bucky <- structure(
 ```
 
 ```{r}
-# New S3 method
+# New S3 method for `print()`
 print.Dog <- function(x) {
   cat(x$noise)
 }
@@ -539,6 +539,7 @@ library(R6)
 ```
 
 ```{r}
+# Create an abstract Dog class
 Dog <-
   R6Class(
     classname = 'Dog',
@@ -572,13 +573,13 @@ bucky$make_noise()
 
 ## Active Bindings
 
-> `makeActiveBinding()` installs `fun` in environment `env` so that getting the value of `sym` calls fun with no arguments, and assigning to `sym` calls `fun` with one argument, the value to be assigned. This allows the implementation of things like `C` variables linked to `R` variables and variables linked to databases
+> `makeActiveBinding()` installs `fun` in environment `env` so that getting the value of `sym` calls `fun` with no arguments, and assigning to `sym` calls `fun` with one argument, the value to be assigned. This allows the implementation of things like `C` variables linked to `R` variables and variables linked to databases
 
 - Active bindings are a first-class feature in R6, so we typically don't use `makeActiveBinding` directly...
 
 ## Active Bindings
 
-- That isn't a very clear definition, let me try...
+- That isn't a very clear definition, so let me try...
 
 - Active bindings __LOOK__ like standard R objects in your global/local environment, but:
     + When you __ACCESS__ the objects value it actually runs a function in the background
@@ -653,9 +654,9 @@ Each of these functions is an API request to OpenM++ wrapped into a friendly hel
 
 ## Design Considerations
 
-- This is an _opinionated_ framework for programmatically interfacing with OpenM++ and the cloud-based interface to OncoSimX models
+- This is an _opinionated_ framework for programmatically interfacing with the OpenM++ API and the cloud-based OncoSimX models
 
-- __Design principle__: abstract away the technical debt associated with calling APIs from R; from the users perspective, it should _look and feel_ like a normal R package
+- __Design principle__: abstract away the technical debt associated with calling the OpenM++ API from R; from the users perspective, it should _look and feel_ like a _"normal"_ R package
 
 - Trying to achieve feature parity with the GUI
 
@@ -717,7 +718,7 @@ __OncoSim-All Cancers__: Projects the incidence, deaths, and healthcare costs of
 - We learned (hopefully):
     + OpenM++ microsimulation platform
     + Brief introduction to APIs
-    + Communication with APIs from R
+    + Communication with OpenM++ API from R
     + Some advanced R techniques for real-time API connections
 
 - The goal of this workshop was to be _illustrative_, not __prescriptive__. If you choose to use OpenM++ for your miscrosimulation needs, hopefully this workshop provided _food for thought_ about how best to interact with OpenM++ programmatically using R
