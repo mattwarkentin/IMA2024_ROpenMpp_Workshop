@@ -1,14 +1,14 @@
 ---
 title: "Hands-on with R and OpenM++ for Microsimulation"
-subtitle: "9th World Congress of the International Microsimulation Association (IMA)"
-author: "Matt Warkentin, PhD (<matthew.warkentin@ucalgary.ca>)"
+subtitle: "9th World Congress of the International Microsimulation Association"
+author: "Matt Warkentin, PhD (<matthew.warkentin@ucalgary.ca>)<br>Michael Wolfson, PhD (<mwolfson@uottawa.ca>)"
 date: 2024-01-08
 format: 
   revealjs:
     logo: assets/UC-vert-rgb.png
     theme: [default, custom.scss]
     title-slide-attributes: 
-      data-background-color: '#ffcd00'
+      data-background-image: 'https://images.unsplash.com/photo-1582778959124-88d5fd4fafa9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     code-link: true
     code-line-numbers: false
     self-contained: false
@@ -28,11 +28,12 @@ library(fontawesome)
 library(htmltools)
 ```
 
-## Who am I?
+## Who are we? {.smaller}
 
+:::: {.columns}
+
+::: {.column width="50%"}
 - __Name:__ Matt Warkentin
-
-- __Hometown:__ Port Dalhousie, Ontario, Canada
 
 - __Living:__ Calgary, Alberta, Canada
 
@@ -41,18 +42,35 @@ library(htmltools)
     + MSc, Epidemiology, Brock University
     + PhD, Molecular Epidemiology, University of Toronto
     + Postdoc, Dept. of Oncology, University of Calgary
+:::
 
-## Disclosures
+::: {.column width="50%"}
+- __Name:__ Michael Wolfson
 
-- None to declare
-    + I do not/have not received any financial compensation from OpenM++
+- __Living:__ Ottawa, Ontario, Canada
+
+- __Education:__
+    + BSc, Mathematics, Computer Science, Economics, University of Toronto
+    + PhD, Economics, Cambridge University
+    + Professor (nominally retired), University of Ottawa
+:::
+
+::::
+
+## Relevant Disclosures
+
+- __Matt Warkentin__: None to declare
+
+- __Michael Wolfson__: Managed development of ModGen at Statistics Canada; Funded much of the development of OpenM++ from various research grants at University of Ottawa
 
 ## `r fa('broom')` Housekeeping
 
 - Active workshop participants should have been provided a __user name__ and __login__ to connect to the cloud instance of OpenM++
-    + Please come see me if you don't yet have this information
+    + Please come see us if you don't yet have this information
 
 - Passive participants, please feel free to ask questions and interact with the workshop team
+
+- Ask questions!
 
 - Ask questions!
 
@@ -69,11 +87,11 @@ library(htmltools)
 
 5. Hands-on examples
     + RiskPaths: Childlessness model 
-    + OncoSimX-allcancers: Cancer model
+    + OncoSimX-allcancers: Cancer model (_time permitting_)
 
 6. Concluding remarks
 
-## What I hope to achieve?
+## What we hope to achieve?
 
 1. Provide contextual background information on the history, design considerations, and features of OpenM++
 
@@ -85,24 +103,32 @@ library(htmltools)
 
 # Brief history of OpenM++
 
-Michael C. Wolfson, PhD
-
-University of Ottawa
-
 ## What is OpenM++
 
-> OpenM++ is an open-source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop simple or complex models.
+> OpenM++ is an open-source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop a range of models spanning simple to highly complex.
 
-- Primarily written in C and C++
+- Primarily written in C++
 
 - Can install and run on Mac, Windows, and Linux
 
-- _Heir apparent_ to __Modgen__
-    + The OpenM++ language is based on the Modgen language developed at Statistics Canada. With minor modifications to model source code...
+- Carefully designed and constructed to be the backward compatible _heir_ to __ModGen__
 
-## Why supercede Modgen?
+## What is OpenM++
 
-- Add some brief points here to provide context...
+- __Important point of distinction__:
+    + OpenM++ the software/compiler
+    + OpenM++ the microsimulation models written therein
+    
+- We focus on the latter, microsim models written in OpenM++
+
+- OpenM++ is a __domain-specific language__ (DSL) that extends C++
+    + OpenM++ provides extensions that enable simple to complex microsimulation models to be written with about _one-fifth_ as many lines of code
+
+## Why supercede ModGen?
+
+- ModGen was originally developed by Statistics Canada for its growing set of large and complex microsimulation models
+
+- Time had come for a transition to an open-source version, one that works in multiple environments (not only Windows), works smoothly with contemporary cloud services and can exploit massive parallelism
 
 - [Introduction to Modgen](https://www.statcan.gc.ca/en/microsimulation/modgen/new/introduction/introduction)
     + For the interested reader...
@@ -252,6 +278,8 @@ read_html('https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API') |>
     groupBy = 'method'
   )
 ```
+
+# Brief introduction to API {background-color='#ffe57b'}
 
 ## But, what is an API?
 
@@ -581,6 +609,8 @@ example_binding <- 100
 
 - This feature is useful because our models/data live in a database and so it allows us to create bindings that always run functions in the background to communicate and stay _up-to-date_ with the server (i.e., OpenM++)
 
+- If a user makes a change in the GUI, this needs to be reflected in REAL TIME in our active R session
+
 - Example: when a user tries to access an output table, a function is ran to retrieve the table in real-time to ensure it is accurate and up-to-date
 
 ```r
@@ -594,16 +624,16 @@ Programmatic interface to OpenM++ and OncoSimX
 
 ## Main Classes
 
-- When using `oncosimx`, you will usually be interacting with one (or many) of three specific classes
+- When using `oncosimx`, you will interact with one (or many) of three specific classes
 
 - `OncoSimXModel`
-    + Class def. for one of the OncoSimX models (e.g., All cancer, breast, cervical, colorectal, lung)
+    + R6 Class def. for one of the OncoSimX models (e.g., All cancers)
 
 - `OncoSimXWorkset`
-    + Class def. for a set of input parameters (i.e., scenario)
+    + R6 Class def. for a set of input parameters (i.e., scenario)
 
 - `OncoSimXModelRun`
-    + Class def. for a model run
+    + R6 Class def. for a model run
 
 ## Additional Functions
 
@@ -617,15 +647,15 @@ Programmatic interface to OpenM++ and OncoSimX
 
 Each of these functions is an API request to OpenM++ wrapped into a friendly helper function...
 
-# {#schematic-id}
+## {#schematic-id}
 
 ![](assets/illustrations/illustrations.001.jpeg){fig-align="center"}
 
 ## Design Considerations
 
-- This is an _opinionated_ framework for programmatically interfacing with OpenM++ and the cloud-based interface to OncoSimX
+- This is an _opinionated_ framework for programmatically interfacing with OpenM++ and the cloud-based interface to OncoSimX models
 
-- Design principle: abstract away the technical debt associated with calling APIs from R; from the users perspective, it should _look and feel_ like a normal R package
+- __Design principle__: abstract away the technical debt associated with calling APIs from R; from the users perspective, it should _look and feel_ like a normal R package
 
 - Trying to achieve feature parity with the GUI
 
@@ -662,7 +692,7 @@ Each of these functions is an API request to OpenM++ wrapped into a friendly hel
 
 __RiskPaths__: A model for the study of childlessness
 
-## OncoSim and OncoSimX
+## OncoSim
 
 > OncoSim is a free, web-based simulation tool that evaluates cancer control strategies. Combining data from the real world, expert opinion and the published literature, OncoSim projects health and economic outcomes, and attributes them to 19 risk factors, such as smoking and inadequate physical activity. It currently models four cancer sites (breast, colorectal, lung, and cervical) and related screening programs in detail, and provides high-level projections for 25 cancer sites
 
@@ -727,6 +757,7 @@ Please feel free to get in touch with me after the workshop at the following ema
 ::: {.column width="50%"}
 - __Brenner Lab/U of C__
     + Darren R. Brenner
+    + Winson Cheung
     + John Hutchinson
     + Yibing Ruan
     + Rob Basmadjian

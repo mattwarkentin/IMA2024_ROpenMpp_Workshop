@@ -1,5 +1,5 @@
 /*-- scss:defaults --*/
-$presentation-h1-font-size: 1.75em;
+$presentation-h1-font-size: 1.5em;
 $presentation-h2-font-size: 1.25em;
 $presentation-h3-font-size: 1.1em;
 $presentation-heading-color: 'black';
@@ -8,6 +8,7 @@ $presentation-heading-font-weight: 400;
 $presentation-line-height: 1.3;
 
 $presentation-font-size-root: 38px;
+$presentation-font-smaller: 0.75;
 
 $presentation-title-slide-text-align: left;
 
@@ -36,7 +37,7 @@ a:link {
 }
 
 .reveal div.cell-output pre code:before {
-  content: '> ';
+  content: '';
 }
 
 .reveal div.slide-number a {
@@ -44,4 +45,28 @@ a:link {
   text-decoration: none;
   color: black;
   font-size: 0.9em;
+}
+
+.reveal section#title-slide {
+  color: white !important;
+}
+
+.reveal section#title-slide > h1 {
+  color: white !important;
+}
+
+.reveal #title-slide > p.subtitle {
+  font-size: 0.9em !important;
+}
+
+#title-slide > div.quarto-title-authors {
+  font-size: 0.9em !important;
+}
+
+.reveal #title-slide > p.date {
+  font-size: 0.9em !important;
+}
+
+.reveal #title-slide > p.date:before {
+  content: 'Date: ';
 }

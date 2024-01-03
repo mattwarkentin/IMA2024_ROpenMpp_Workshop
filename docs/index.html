@@ -10,7 +10,7 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.450">
-<meta name="author" content="Matt Warkentin, PhD (matthew.warkentin@ucalgary.ca)">
+<meta name="author" content="Matt Warkentin, PhD (matthew.warkentin@ucalgary.ca) Michael Wolfson, PhD (mwolfson@uottawa.ca)">
 <meta name="dcterms.date" content="2024-01-08">
 <title>Hands-on with R and OpenM++ for Microsimulation</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -390,22 +390,23 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#ffcd00" class="quarto-title-block center"><h1 class="title">Hands-on with R and OpenM++ for Microsimulation</h1>
-  <p class="subtitle">9th World Congress of the International Microsimulation Association (IMA)</p>
+<section id="title-slide" data-background-image="https://images.unsplash.com/photo-1582778959124-88d5fd4fafa9?q=80&amp;w=1740&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="quarto-title-block center"><h1 class="title">Hands-on with R and OpenM++ for Microsimulation</h1>
+  <p class="subtitle">9th World Congress of the International Microsimulation Association</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email">matthew.warkentin@ucalgary.ca</a>) 
+Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email">matthew.warkentin@ucalgary.ca</a>)<br>Michael Wolfson, PhD (<a href="mailto:mwolfson@uottawa.ca" class="email">mwolfson@uottawa.ca</a>) 
 </div>
 </div>
 </div>
 
   <p class="date">2024-01-08</p>
-</section><section id="who-am-i" class="slide level2"><h2>Who am I?</h2>
+</section><section id="who-are-we" class="slide level2 smaller"><h2>Who are we?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li><p><strong>Name:</strong> Matt Warkentin</p></li>
-<li><p><strong>Hometown:</strong> Port Dalhousie, Ontario, Canada</p></li>
 <li><p><strong>Living:</strong> Calgary, Alberta, Canada</p></li>
 <li>
 <p><strong>Education:</strong></p>
@@ -416,23 +417,37 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <li>Postdoc, Dept. of Oncology, University of Calgary</li>
 </ul>
 </li>
-</ul></section><section id="disclosures" class="slide level2"><h2>Disclosures</h2>
+</ul>
+</div><div class="column" style="width:50%;">
 <ul>
-<li>None to declare
+<li><p><strong>Name:</strong> Michael Wolfson</p></li>
+<li><p><strong>Living:</strong> Ottawa, Ontario, Canada</p></li>
+<li>
+<p><strong>Education:</strong></p>
 <ul>
-<li>I do not/have not received any financial compensation from OpenM++</li>
+<li>BSc, Mathematics, Computer Science, Economics, University of Toronto</li>
+<li>PhD, Economics, Cambridge University</li>
+<li>Professor (nominally retired), University of Ottawa</li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</section><section id="relevant-disclosures" class="slide level2"><h2>Relevant Disclosures</h2>
+<ul>
+<li><p><strong>Matt Warkentin</strong>: None to declare</p></li>
+<li><p><strong>Michael Wolfson</strong>: Managed development of ModGen at Statistics Canada; Funded much of the development of OpenM++ from various research grants at University of Ottawa</p></li>
 </ul></section><section id="housekeeping" class="slide level2"><h2>
 <svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M627.6 57.3c14-10.9 16.5-31 5.6-44.9s-31-16.5-44.9-5.6l-144 112-72 56-8.7 6.8-30.8-39.4c-3.7-4.8-9.8-7-15.8-5.8s-10.7 5.7-12.3 11.5l-12.5 46.3L371.1 295l48-.9c6.1-.1 11.5-3.7 14.1-9.1s1.9-11.9-1.8-16.7L403 231.9l8.6-6.7 72-56 144-112zM16.7 507.7c37.4 2.8 196.8 12 252.3-31.4c57.7-45.1 76.8-161.5 76.8-161.5L267.1 213.9s-117.6-9.6-175.3 35.5C69 267.1 50.5 304.1 36.3 344c-2.4 6.7 4.7 12.8 11 9.4L86.2 333c4.1-2.2 9.2-1.1 12 2.6s2.7 8.8-.4 12.3L24.4 430.4C13.2 442.9 5.5 458.1 2.4 474.5c-.9 4.8-1.6 8.9-2.2 12.1c-.9 5 .5 10.1 3.6 14.1s7.7 6.6 12.8 7z"></path></svg> Housekeeping</h2>
 <ul>
 <li>
 <p>Active workshop participants should have been provided a <strong>user name</strong> and <strong>login</strong> to connect to the cloud instance of OpenM++</p>
 <ul>
-<li>Please come see me if you don’t yet have this information</li>
+<li>Please come see us if you don’t yet have this information</li>
 </ul>
 </li>
 <li><p>Passive participants, please feel free to ask questions and interact with the workshop team</p></li>
+<li><p>Ask questions!</p></li>
 <li><p>Ask questions!</p></li>
 </ul></section><section id="agenda" class="slide level2"><h2>
 <svg aria-hidden="true" role="img" viewbox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M184.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L39 113c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L39 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM256 96c0-17.7 14.3-32 32-32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H288c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H288c-17.7 0-32-14.3-32-32zM192 416c0-17.7 14.3-32 32-32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32zM80 464c-26.5 0-48-21.5-48-48s21.5-48 48-48s48 21.5 48 48s-21.5 48-48 48z"></path></svg> Agenda</h2>
@@ -450,35 +465,46 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <p>Hands-on examples</p>
 <ul>
 <li>RiskPaths: Childlessness model</li>
-<li>OncoSimX-allcancers: Cancer model</li>
+<li>OncoSimX-allcancers: Cancer model (<em>time permitting</em>)</li>
 </ul>
 </li>
 <li><p>Concluding remarks</p></li>
-</ol></section><section id="what-i-hope-to-achieve" class="slide level2"><h2>What I hope to achieve?</h2>
+</ol></section><section id="what-we-hope-to-achieve" class="slide level2"><h2>What we hope to achieve?</h2>
 <ol type="1">
 <li><p>Provide contextual background information on the history, design considerations, and features of OpenM++</p></li>
 <li><p>Provide insights into how the OpenM++ API works and how it can work for YOU</p></li>
 <li><p>Provide some <em>“tricks of the trade”</em> for how to effectively wrap stateful APIs into seamless R packages</p></li>
 <li><p>Provide some <em>“hands on”</em> examples of how this looks and feels when it all comes together</p></li>
 </ol></section><section><section id="brief-history-of-openm" class="title-slide slide level1 center"><h1>Brief history of OpenM++</h1>
-<p>Michael C. Wolfson, PhD</p>
-<p>University of Ottawa</p>
+
 </section><section id="what-is-openm" class="slide level2"><h2>What is OpenM++</h2>
 <blockquote>
-<p>OpenM++ is an open-source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop simple or complex models.</p>
+<p>OpenM++ is an open-source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop a range of models spanning simple to highly complex.</p>
 </blockquote>
 <ul>
-<li><p>Primarily written in C and C++</p></li>
+<li><p>Primarily written in C++</p></li>
 <li><p>Can install and run on Mac, Windows, and Linux</p></li>
-<li>
-<p><em>Heir apparent</em> to <strong>Modgen</strong></p>
+<li><p>Carefully designed and constructed to be the backward compatible <em>heir</em> to <strong>ModGen</strong></p></li>
+</ul></section><section id="what-is-openm-1" class="slide level2"><h2>What is OpenM++</h2>
 <ul>
-<li>The OpenM++ language is based on the Modgen language developed at Statistics Canada. With minor modifications to model source code…</li>
+<li>
+<p><strong>Important point of distinction</strong>:</p>
+<ul>
+<li>OpenM++ the software/compiler</li>
+<li>OpenM++ the microsimulation models written therein</li>
 </ul>
 </li>
-</ul></section><section id="why-supercede-modgen" class="slide level2"><h2>Why supercede Modgen?</h2>
+<li><p>We focus on the latter, microsim models written in OpenM++</p></li>
+<li>
+<p>OpenM++ is a <strong>domain-specific language</strong> (DSL) that extends C++</p>
 <ul>
-<li><p>Add some brief points here to provide context…</p></li>
+<li>OpenM++ provides extensions that enable simple to complex microsimulation models to be written with about <em>one-fifth</em> as many lines of code</li>
+</ul>
+</li>
+</ul></section><section id="why-supercede-modgen" class="slide level2"><h2>Why supercede ModGen?</h2>
+<ul>
+<li><p>ModGen was originally developed by Statistics Canada for its growing set of large and complex microsimulation models</p></li>
+<li><p>Time had come for a transition to an open-source version, one that works in multiple environments (not only Windows), works smoothly with contemporary cloud services and can exploit massive parallelism</p></li>
 <li>
 <p><a href="https://www.statcan.gc.ca/en/microsimulation/modgen/new/introduction/introduction">Introduction to Modgen</a></p>
 <ul>
@@ -589,7 +615,9 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"></path></svg><a href="https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API">API Documentation</a></p>
 <ul>
 <li>The OpenM++ API has over 100 endpoints for querying, setting, and deleting data</li>
-</ul></section><section id="but-what-is-an-api" class="slide level2"><h2>But, what is an API?</h2>
+</ul></section></section><section><section id="brief-introduction-to-api" class="title-slide slide level1 center" data-background-color="#ffe57b"><h1>Brief introduction to API</h1>
+
+</section><section id="but-what-is-an-api" class="slide level2"><h2>But, what is an API?</h2>
 <ul>
 <li>
 <p>Stands for <em>“Application Programming Interface”</em></p>
@@ -672,7 +700,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <pre><code>Content-Type: application/json</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Body: In memory (13257 bytes)</code></pre>
+<pre><code>Body: In memory (12643 bytes)</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -680,13 +708,13 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <span></span>
 <span><span class="va">quotes</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Gratitude is the fairest blossom which springs from the soul."</code></pre>
+<pre><code>[1] "If you genuinely want something, don't wait for it - teach yourself."</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">quotes</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "The secret of happiness, you see, is not found in seeking more, but in developing the capacity to enjoy less."</code></pre>
+<pre><code>[1] "Trust is the foundation of great leadership."</code></pre>
 </div>
 </div>
 </section><section id="simple-r-api-motivational-quotes-2" class="slide level2"><h2>Simple R API: Motivational Quotes</h2>
@@ -703,7 +731,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <span></span>
 <span><span class="fu">get_quote</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Your work is to discover your work and then, with all your heart, to give yourself to it."</code></pre>
+<pre><code>[1] "Don't be afraid that you do not know something. Be afraid of not learning about it."</code></pre>
 </div>
 </div>
 </section></section><section><section id="basic-idea-obfuscate-the-technical-debt-for-making-api-requests-in-r-into-modular-user-friendly-functions" class="title-slide slide level1 center" data-background-color="#ffa300"><h1>
@@ -756,7 +784,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 </details><div class="cell-output cell-output-stdout">
 <pre><code>function (x, ...) 
 UseMethod("print")
-&lt;bytecode: 0x10d9a7a78&gt;
+&lt;bytecode: 0x107094c78&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>
@@ -912,6 +940,7 @@ Coefficients:
 </section><section id="how-does-this-help-us" class="slide level2"><h2>How does this help us?</h2>
 <ul>
 <li><p>This feature is useful because our models/data live in a database and so it allows us to create bindings that always run functions in the background to communicate and stay <em>up-to-date</em> with the server (i.e., OpenM++)</p></li>
+<li><p>If a user makes a change in the GUI, this needs to be reflected in REAL TIME in our active R session</p></li>
 <li><p>Example: when a user tries to access an output table, a function is ran to retrieve the table in real-time to ensure it is accurate and up-to-date</p></li>
 </ul>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Real-time communication with API behind-the-scenes</span></span>
@@ -920,23 +949,23 @@ Coefficients:
 <p>Programmatic interface to OpenM++ and OncoSimX</p>
 </section><section id="main-classes" class="slide level2"><h2>Main Classes</h2>
 <ul>
-<li><p>When using <code>oncosimx</code>, you will usually be interacting with one (or many) of three specific classes</p></li>
+<li><p>When using <code>oncosimx</code>, you will interact with one (or many) of three specific classes</p></li>
 <li>
 <p><code>OncoSimXModel</code></p>
 <ul>
-<li>Class def. for one of the OncoSimX models (e.g., All cancer, breast, cervical, colorectal, lung)</li>
+<li>R6 Class def. for one of the OncoSimX models (e.g., All cancers)</li>
 </ul>
 </li>
 <li>
 <p><code>OncoSimXWorkset</code></p>
 <ul>
-<li>Class def. for a set of input parameters (i.e., scenario)</li>
+<li>R6 Class def. for a set of input parameters (i.e., scenario)</li>
 </ul>
 </li>
 <li>
 <p><code>OncoSimXModelRun</code></p>
 <ul>
-<li>Class def. for a model run</li>
+<li>R6 Class def. for a model run</li>
 </ul>
 </li>
 </ul></section><section id="additional-functions" class="slide level2"><h2>Additional Functions</h2>
@@ -947,12 +976,12 @@ Coefficients:
 <li><p><code>delete_scenario()</code> / <code>delete_workset()</code>, <code>delete_run()</code></p></li>
 </ul>
 <p>Each of these functions is an API request to OpenM++ wrapped into a friendly helper function…</p>
-</section></section><section><section id="schematic-id" class="title-slide slide level1 center"><h1></h1>
+</section><section id="schematic-id" class="slide level2"><h2></h2>
 
 <img data-src="assets/illustrations/illustrations.001.jpeg" class="r-stretch quarto-figure-center"></section><section id="design-considerations" class="slide level2"><h2>Design Considerations</h2>
 <ul>
-<li><p>This is an <em>opinionated</em> framework for programmatically interfacing with OpenM++ and the cloud-based interface to OncoSimX</p></li>
-<li><p>Design principle: abstract away the technical debt associated with calling APIs from R; from the users perspective, it should <em>look and feel</em> like a normal R package</p></li>
+<li><p>This is an <em>opinionated</em> framework for programmatically interfacing with OpenM++ and the cloud-based interface to OncoSimX models</p></li>
+<li><p><strong>Design principle</strong>: abstract away the technical debt associated with calling APIs from R; from the users perspective, it should <em>look and feel</em> like a normal R package</p></li>
 <li><p>Trying to achieve feature parity with the GUI</p></li>
 </ul></section><section id="first-hands-on-example-riskpaths" class="slide level2"><h2>First Hands-on Example: RiskPaths</h2>
 <blockquote>
@@ -1000,7 +1029,7 @@ Coefficients:
 </section></section><section><section id="hands-on-example" class="title-slide slide level1 center" data-background-color="#ffe57b"><h1>
 <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M154.9 162c.3 .7 .7 1.5 1.1 2.2l17.8 30.9c11.1-12.6 27.4-19.8 44.4-19.1l-20.7-35.8c-6.6-11.5-21.3-15.4-32.8-8.8c-10.8 6.2-14.9 19.5-9.9 30.6zm173.6 47C399.7 231.7 448 297.8 448 372.5c0 1.5 0 3-.1 4.5c39.7-25.6 64.1-69.7 64.1-117.4V136c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 81.7L347.8 16.5C341.2 5 326.5 1.1 315.1 7.7s-15.4 21.3-8.8 32.8l64 110.9c2.2 3.8 .9 8.7-2.9 10.9s-8.7 .9-10.9-2.9l-80-138.6C269.8 9.3 255.1 5.4 243.6 12s-15.4 21.3-8.8 32.8l80 138.6c2.2 3.8 .9 8.7-2.9 10.9s-8.7 .9-10.9-2.9L237 80.5c-6.6-11.5-21.3-15.4-32.8-8.8s-15.4 21.3-8.8 32.8l44 76.2L328.5 209zM64 488c0 12.4 9.4 22.6 21.5 23.9c.8 .1 1.6 .1 2.5 .1H288.7 296c66.3 0 120-53.7 120-120c0-1.2 0-2.4-.1-3.6c0-1.2 .1-2.5 .1-3.7c0-68-44-128.2-108.9-148.9l-83.9-26.7c-12.6-4-26.1 3-30.1 15.6s3 26.1 15.6 30.1L262.6 272H56c-13.3 0-24 10.7-24 24s10.7 24 24 24H184c4.4 0 8 3.6 8 8s-3.6 8-8 8H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H184c4.4 0 8 3.6 8 8s-3.6 8-8 8H56c-13.3 0-24 10.7-24 24s10.7 24 24 24H184c4.4 0 8 3.6 8 8s-3.6 8-8 8H88c-13.3 0-24 10.7-24 24z"></path></svg> Hands-on Example</h1>
 <p><strong>RiskPaths</strong>: A model for the study of childlessness</p>
-</section><section id="oncosim-and-oncosimx" class="slide level2"><h2>OncoSim and OncoSimX</h2>
+</section><section id="oncosim" class="slide level2"><h2>OncoSim</h2>
 <blockquote>
 <p>OncoSim is a free, web-based simulation tool that evaluates cancer control strategies. Combining data from the real world, expert opinion and the published literature, OncoSim projects health and economic outcomes, and attributes them to 19 risk factors, such as smoking and inadequate physical activity. It currently models four cancer sites (breast, colorectal, lung, and cervical) and related screening programs in detail, and provides high-level projections for 25 cancer sites</p>
 </blockquote>
@@ -1069,6 +1098,7 @@ Coefficients:
 <strong>Brenner Lab/U of C</strong>
 <ul>
 <li>Darren R. Brenner</li>
+<li>Winson Cheung</li>
 <li>John Hutchinson</li>
 <li>Yibing Ruan</li>
 <li>Rob Basmadjian</li>
