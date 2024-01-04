@@ -7,9 +7,9 @@ library(oncosimx)
 
 get_models()
 
-get_scenarios('RiskPaths')
+get_worksets('RiskPaths')
 
-get_model_runs('RiskPaths')
+get_model_runs('RiskPaths')$RunDigest
 
 ## Load and inspect RiskPaths Model ----
 
@@ -17,9 +17,9 @@ riskpaths <- load_model('RiskPaths')
 
 riskpaths
 
-riskpaths$ParamInfo
+riskpaths$ParamsInfo
 
-riskpaths$TableInfo
+riskpaths$TablesInfo
 
 riskpaths$ModelDigest
 
@@ -31,23 +31,42 @@ riskpaths$ModelRuns
 
 rp_default_ws <- load_scenario('RiskPaths', 'Default')
 
-rp_default_ws$Parameters
+rp_default_ws
+
+rp_default_ws$ReadOnly
+
+rp_default_ws$Parameters$AgeBaselineForm1
+
+rp_default_ws$Parameters$AgeBaselinePreg1
 
 ## Load and inspect Default RiskPaths run ----
 
 rp_default_run <- load_model_run('RiskPaths', 'RiskPaths_Default')
 
-rp_default_run$Parameters
+rp_default_run$Parameters$AgeBaselinePreg1
 
-rp_default_run$Tables
+rp_default_run$Tables$T03_FertilityByAge
+
+rp_default_run$Tables$T03_FertilityByAge |>
+  ggplot(aes(Dim0, expr_value)) +
+  geom_col()
+
+rp_default_run$Tables$T06_BirthsByUnion |>
+  filter(Dim0 != 'all') |>
+  ggplot(aes(Dim0, expr_value)) +
+  geom_col()
 
 ## Create and run new RiskPaths workset ----
 
-create_scenario('RiskPaths', 'MyNewScenario')
+create_scenario('RiskPaths', 'MyWorkset', '9a6bf761db1a7f27b91fc1d56c0e6d0e')
 
-myscenario <- load_scenario('RiskPaths', 'MyNewScenario')
+myworkset <- load_scenario('RiskPaths', 'MyWorkset')
 
-old_param <- myscenario$Parameters$AgeBaselinePreg1
+myworkset
+
+myworkset$copy_params('AgeBaselinePreg1')
+
+old_param <- myworkset$Parameters$AgeBaselinePreg1
 
 new_param <-
   old_param |>
@@ -56,14 +75,14 @@ new_param <-
     across(-sub_id, \(x) x * 0.9)
   )
 
-myscenario$Parameters$AgeBaselinePreg1 <- new_param
+myworkset$Parameters$AgeBaselinePreg1 <- new_param
 
-myscenario$ReadOnly <- TRUE
+myworkset$ReadOnly <- TRUE
 
-myscenario$run(
+myworkset$run(
   name = 'MyRun',
   wait = TRUE,
-  progress = TRUE,
+  progress = FALSE,
   opts = opts_run(SimulationCases = 50000)
 )
 
@@ -71,10 +90,28 @@ myscenario$run(
 
 myrun <- load_run('RiskPaths', 'MyRun')
 
-myrun$Tables$T04_FertilityRatesByAgeGroup
+myrun$Tables$T03_FertilityByAge
 
 ## Load multiple runs and compare results ----
 
-rp_runs <- load_runs('RiskPaths', riskpaths$RunDigests)
+rp_runs <- load_runs('RiskPaths', riskpaths$ModelRuns$RunDigest)
 
-rp_runs$Tables$T04_FertilityRatesByAgeGroup
+rp_runs
+
+rp_runs$Tables$T03_FertilityByAge
+
+rp_runs$Tables$T03_FertilityByAge |>
+  ggplot(aes(Dim0, expr_value, fill = RunName)) +
+  geom_col(position = position_dodge())
+
+rp_runs$Tables$T04_FertilityRatesByAgeGroup |>
+  ggplot(aes(Dim0, expr_value, fill = RunName)) +
+  geom_col(position = position_dodge()) +
+  facet_wrap(~ Dim1, scales = 'free_y')
+
+## Clean up workset and run ----
+
+myworkset$ReadOnly <- FALSE
+delete_workset('RiskPaths', 'MyWorkset')
+
+delete_run('RiskPaths', 'MyRun')

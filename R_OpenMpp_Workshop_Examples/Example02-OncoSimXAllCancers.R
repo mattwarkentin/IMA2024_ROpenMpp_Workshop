@@ -17,9 +17,9 @@ allcancers <- load_model('OncoSimX-allcancers')
 
 allcancers
 
-allcancers$ParamInfo
+allcancers$ParamsInfo
 
-allcancers$TableInfo
+allcancers$TablesInfo
 
 allcancers$ModelDigest
 
@@ -35,8 +35,15 @@ ac_default_ws$Parameters
 
 ## Load and inspect Default OncoSimX run ----
 
-ac_default_run <- load_model_run('OncoSimX-allcancers', 'Default')
+ac_default_run <- load_model_run('OncoSimX-allcancers', 'Default_first_run_32M_cases_12_subs')
+
+ac_default_run
 
 ac_default_run$Parameters
 
-ac_default_run$Tables
+ac_default_run$Tables$All_Cancer_Age_Standardized_Rates_Table |> View()
+
+ac_default_run$Tables$All_Cancer_Active_Cost_Table |>
+  filter(Cancers == 'Lung', Sex != 'all') %>%
+  ggplot(aes(Year, expr_value, fill = Sex)) +
+  geom_col()
