@@ -630,13 +630,13 @@ Programmatic interface to OpenM++ and OncoSimX
 
 - When using `oncosimx`, you will interact with one (or many) of three specific classes
 
-- `OncoSimXModel`
-    + R6 class definition for one of the OncoSimX models
+- `OpenMppModel`
+    + R6 class definition for an OpenM++ model
 
-- `OncoSimXWorkset`
-    + R6 class definition for a set of model input parameters
+- `OpenMppWorkset`
+    + R6 class definition for a set of model input model parameters
 
-- `OncoSimXModelRun`
+- `OpenMppModelRun`
     + R6 class definition for a model run
 
 ## Additional Functions
@@ -657,11 +657,11 @@ Each of these functions is an API request to OpenM++ wrapped into a friendly hel
 
 ## Design Considerations
 
-- This is an _opinionated_ framework for programmatically interfacing with the OpenM++ API and the cloud-based OncoSimX models
+- This is an _opinionated_ framework for programmatically interfacing with the OpenM++ API and the cloud-based OncoSimX models (or any OpenM++ models)
 
 - __Design principle__: abstract away the technical debt associated with calling the OpenM++ API from R; from the users perspective, it should _look and feel_ like a _"normal"_ R package
 
-- Trying to achieve feature parity with the GUI
+- Trying to achieve feature parity with the OpenM++ GUI
 
 ## First Hands-on Example: RiskPaths
 
@@ -694,6 +694,8 @@ Each of these functions is an API request to OpenM++ wrapped into a friendly hel
 
 __RiskPaths__: A model for the study of childlessness
 
+__URL:__ https://cpac-r.openmpp.org
+
 ## OncoSim
 
 > OncoSim is a free, web-based simulation tool that evaluates cancer control strategies. Combining data from the real world, expert opinion and the published literature, OncoSim projects health and economic outcomes, and attributes them to 19 risk factors, such as smoking and inadequate physical activity. It currently models four cancer sites (breast, colorectal, lung, and cervical) and related screening programs in detail, and provides high-level projections for 25 cancer sites
@@ -713,6 +715,8 @@ __RiskPaths__: A model for the study of childlessness
 # `r fa('hands')` Hands-on Example {background-color='#ffe57b'}
 
 __OncoSim-All Cancers__: Projects the incidence, deaths, and healthcare costs of 25 cancers in Canada
+
+__URL:__ https://cpac-r.openmpp.org
 
 ## Closing remarks
 

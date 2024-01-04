@@ -31,6 +31,8 @@ allcancers$ModelRuns
 
 ac_default_ws <- load_scenario('OncoSimX-allcancers', 'Default')
 
+ac_default_ws
+
 ac_default_ws$Parameters
 
 ## Load and inspect Default OncoSimX run ----
@@ -41,7 +43,7 @@ ac_default_run
 
 ac_default_run$Parameters
 
-ac_default_run$Tables$All_Cancer_Age_Standardized_Rates_Table |> View()
+ac_default_run$Tables$All_Cancer_Age_Standardized_Rates_Table
 
 ac_default_run$Tables$All_Cancer_Active_Cost_Table |>
   filter(Cancers == 'Lung', Sex != 'all') %>%

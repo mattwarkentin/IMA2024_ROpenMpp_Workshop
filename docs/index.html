@@ -705,7 +705,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <pre><code>Content-Type: application/json</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Body: In memory (13417 bytes)</code></pre>
+<pre><code>Body: In memory (13202 bytes)</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -713,13 +713,13 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <span></span>
 <span><span class="va">quotes</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "The educated differ from the uneducated as much as the living differ from the dead."</code></pre>
+<pre><code>[1] "I don't pretend to know everything; I just only speak on matters I know I'll win."</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">quotes</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Silence is sometimes the best answer."</code></pre>
+<pre><code>[1] "If you cling to a certain thought with dynamic will power, it finally assumes a tangible outward form."</code></pre>
 </div>
 </div>
 </section><section id="simple-r-api-motivational-quotes-2" class="slide level2"><h2>Simple R API: Motivational Quotes</h2>
@@ -736,7 +736,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 <span></span>
 <span><span class="fu">get_quote</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "All that we see or seem is but a dream within a dream."</code></pre>
+<pre><code>[1] "Best be yourself, imperial, plain, and true."</code></pre>
 </div>
 </div>
 </section></section><section><section id="basic-idea-obfuscate-the-technical-debt-for-making-api-requests-in-r-into-modular-user-friendly-functions" class="title-slide slide level1 center" data-background-color="#ffe57b"><h1>
@@ -785,7 +785,7 @@ Matt Warkentin, PhD (<a href="mailto:matthew.warkentin@ucalgary.ca" class="email
 </details><div class="cell-output cell-output-stdout">
 <pre><code>function (x, ...) 
 UseMethod("print")
-&lt;bytecode: 0x156dd8560&gt;
+&lt;bytecode: 0x125702f60&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>
@@ -956,19 +956,19 @@ Coefficients:
 <ul>
 <li><p>When using <code>oncosimx</code>, you will interact with one (or many) of three specific classes</p></li>
 <li>
-<p><code>OncoSimXModel</code></p>
+<p><code>OpenMppModel</code></p>
 <ul>
-<li>R6 class definition for one of the OncoSimX models</li>
+<li>R6 class definition for an OpenM++ model</li>
 </ul>
 </li>
 <li>
-<p><code>OncoSimXWorkset</code></p>
+<p><code>OpenMppWorkset</code></p>
 <ul>
-<li>R6 class definition for a set of model input parameters</li>
+<li>R6 class definition for a set of model input model parameters</li>
 </ul>
 </li>
 <li>
-<p><code>OncoSimXModelRun</code></p>
+<p><code>OpenMppModelRun</code></p>
 <ul>
 <li>R6 class definition for a model run</li>
 </ul>
@@ -985,9 +985,9 @@ Coefficients:
 
 <img data-src="assets/illustrations/illustrations.001.jpeg" class="r-stretch quarto-figure-center"></section><section id="design-considerations" class="slide level2"><h2>Design Considerations</h2>
 <ul>
-<li><p>This is an <em>opinionated</em> framework for programmatically interfacing with the OpenM++ API and the cloud-based OncoSimX models</p></li>
+<li><p>This is an <em>opinionated</em> framework for programmatically interfacing with the OpenM++ API and the cloud-based OncoSimX models (or any OpenM++ models)</p></li>
 <li><p><strong>Design principle</strong>: abstract away the technical debt associated with calling the OpenM++ API from R; from the users perspective, it should <em>look and feel</em> like a <em>“normal”</em> R package</p></li>
-<li><p>Trying to achieve feature parity with the GUI</p></li>
+<li><p>Trying to achieve feature parity with the OpenM++ GUI</p></li>
 </ul></section><section id="first-hands-on-example-riskpaths" class="slide level2"><h2>First Hands-on Example: RiskPaths</h2>
 <blockquote>
 <p>Being a model for the study of childlessness, the main event of RiskPaths is the first pregnancy (which is always assumed to lead to birth). Pregnancy can occur at any point in time after the 15th birthday, with risks changing by both age and union status. The underlying statistical models are piecewise constant hazard regressions. With respect to fertility this implies the assumption of a constant pregnancy risk for a given age group and union status.</p>
@@ -1033,6 +1033,7 @@ Coefficients:
 </section></section><section><section id="hands-on-example" class="title-slide slide level1 center" data-background-color="#ffe57b"><h1>
 <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M330.8 242.3L223.1 209.1C210.3 205.2 197 212.3 193.1 224.9C189.2 237.6 196.3 251 208.9 254.9L256 272H56.9c-11.61 0-22.25 7.844-24.44 19.24C29.51 306.6 41.19 320 56 320h128C188.4 320 192 323.6 192 328S188.4 336 184 336H24.9c-11.61 0-22.25 7.844-24.44 19.24C-2.49 370.6 9.193 384 24 384h160C188.4 384 192 387.6 192 392S188.4 400 184 400H56.9c-11.61 0-22.25 7.844-24.44 19.24C29.51 434.6 41.19 448 56 448h128C188.4 448 192 451.6 192 456S188.4 464 184 464H88.9c-11.61 0-22.25 7.844-24.44 19.24C61.51 498.6 73.19 512 88 512h208c66.28 0 120-53.73 120-120v-32.03C416 306.6 381.1 259.4 330.8 242.3zM197.1 179.5c5.986-2.148 12.32-3.482 18.98-3.482c5.508 0 10.99 .8105 16.5 2.471l16.11 4.975L227.7 117.2C224.2 106.2 213.6 98.39 202 99.74c-15.51 1.807-24.79 16.99-20.33 31.11L197.1 179.5zM487.1 144.5c-13.27 .0977-23.95 10.91-23.86 24.16l-2.082 50.04l-59.98-189.8c-3.496-11.07-14.18-18.86-25.71-17.51c-15.51 1.807-24.79 16.99-20.33 31.11l38.56 122.1c1.332 4.213-1.004 8.707-5.219 10.04c-4.213 1.332-8.707-1.004-10.04-5.217l-47.93-151.7c-3.496-11.07-14.18-18.86-25.71-17.51c-15.51 1.807-24.79 16.99-20.33 31.11l43.37 137.8c1.33 4.213-1.006 8.707-5.219 10.04c-4.213 1.332-8.707-1.004-10.04-5.217l-33.46-106.4C275.6 56.39 264.9 48.6 253.4 49.94c-15.51 1.807-24.79 16.99-20.33 31.11l34.15 108.1l73.7 22.76C404.1 233.3 448 292.8 448 359.9v27.91c38.27-21.17 63.28-61.24 64-106.7V168.4C511.8 155.1 500.3 144.5 487.1 144.5z"></path></svg> Hands-on Example</h1>
 <p><strong>RiskPaths</strong>: A model for the study of childlessness</p>
+<p><strong>URL:</strong> https://cpac-r.openmpp.org</p>
 </section><section id="oncosim" class="slide level2"><h2>OncoSim</h2>
 <blockquote>
 <p>OncoSim is a free, web-based simulation tool that evaluates cancer control strategies. Combining data from the real world, expert opinion and the published literature, OncoSim projects health and economic outcomes, and attributes them to 19 risk factors, such as smoking and inadequate physical activity. It currently models four cancer sites (breast, colorectal, lung, and cervical) and related screening programs in detail, and provides high-level projections for 25 cancer sites</p>
@@ -1049,6 +1050,7 @@ Coefficients:
 </ul></section></section><section><section id="hands-on-example-1" class="title-slide slide level1 center" data-background-color="#ffe57b"><h1>
 <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M330.8 242.3L223.1 209.1C210.3 205.2 197 212.3 193.1 224.9C189.2 237.6 196.3 251 208.9 254.9L256 272H56.9c-11.61 0-22.25 7.844-24.44 19.24C29.51 306.6 41.19 320 56 320h128C188.4 320 192 323.6 192 328S188.4 336 184 336H24.9c-11.61 0-22.25 7.844-24.44 19.24C-2.49 370.6 9.193 384 24 384h160C188.4 384 192 387.6 192 392S188.4 400 184 400H56.9c-11.61 0-22.25 7.844-24.44 19.24C29.51 434.6 41.19 448 56 448h128C188.4 448 192 451.6 192 456S188.4 464 184 464H88.9c-11.61 0-22.25 7.844-24.44 19.24C61.51 498.6 73.19 512 88 512h208c66.28 0 120-53.73 120-120v-32.03C416 306.6 381.1 259.4 330.8 242.3zM197.1 179.5c5.986-2.148 12.32-3.482 18.98-3.482c5.508 0 10.99 .8105 16.5 2.471l16.11 4.975L227.7 117.2C224.2 106.2 213.6 98.39 202 99.74c-15.51 1.807-24.79 16.99-20.33 31.11L197.1 179.5zM487.1 144.5c-13.27 .0977-23.95 10.91-23.86 24.16l-2.082 50.04l-59.98-189.8c-3.496-11.07-14.18-18.86-25.71-17.51c-15.51 1.807-24.79 16.99-20.33 31.11l38.56 122.1c1.332 4.213-1.004 8.707-5.219 10.04c-4.213 1.332-8.707-1.004-10.04-5.217l-47.93-151.7c-3.496-11.07-14.18-18.86-25.71-17.51c-15.51 1.807-24.79 16.99-20.33 31.11l43.37 137.8c1.33 4.213-1.006 8.707-5.219 10.04c-4.213 1.332-8.707-1.004-10.04-5.217l-33.46-106.4C275.6 56.39 264.9 48.6 253.4 49.94c-15.51 1.807-24.79 16.99-20.33 31.11l34.15 108.1l73.7 22.76C404.1 233.3 448 292.8 448 359.9v27.91c38.27-21.17 63.28-61.24 64-106.7V168.4C511.8 155.1 500.3 144.5 487.1 144.5z"></path></svg> Hands-on Example</h1>
 <p><strong>OncoSim-All Cancers</strong>: Projects the incidence, deaths, and healthcare costs of 25 cancers in Canada</p>
+<p><strong>URL:</strong> https://cpac-r.openmpp.org</p>
 </section><section id="closing-remarks" class="slide level2"><h2>Closing remarks</h2>
 <ul>
 <li>We learned (hopefully):

@@ -83,7 +83,7 @@ myworkset$run(
   name = 'MyRun',
   wait = TRUE,
   progress = FALSE,
-  opts = opts_run(SimulationCases = 50000)
+  opts = opts_run(SimulationCases = 10000)
 )
 
 ## Load run and inspect results ----
