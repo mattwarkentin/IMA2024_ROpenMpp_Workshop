@@ -12,7 +12,7 @@ format:
     code-link: true
     code-line-numbers: false
     self-contained: false
-    slide-number: c/t
+    slide-number: c
 engine: knitr
 execute: 
   echo: true
@@ -65,10 +65,12 @@ library(htmltools)
 
 ## `r fa('broom')` Housekeeping
 
-- Active workshop participants should have been provided a __user name__ and __login__ to connect to the cloud instance of OpenM++
+- Those wishing to be __active__ workshop participants will require a __user name__ and __password__ to connect to the cloud instance of OpenM++
     + Please come see us if you don't yet have this information
 
-- Passive participants, please feel free to ask questions and interact with the workshop team
+- Passive participants, please feel free follow along, ask questions, and interact with the workshop team
+
+- Ask questions!
 
 - Ask questions!
 
@@ -81,13 +83,12 @@ library(htmltools)
 2. Introduction to the OpenM++ API
 
 3. Wrapping an API in R
-    + Including some tricks-of-the-trade
+    + Including some _tricks-of-the-trade_
 
-4. Introduction to `{oncosimx}`
+4. Wrapping the OpenM++ API
+    + Introduction to `{oncosimx}`
 
 5. Hands-on examples
-    + RiskPaths: Childlessness model 
-    + OncoSimX-allcancers: Cancer model (_time permitting_)
 
 6. Concluding remarks
 
@@ -97,21 +98,33 @@ library(htmltools)
 
 1. Provide insights into how the OpenM++ API works and how it can work for YOU
 
-1. Provide some _"tricks of the trade"_ for how to effectively wrap stateful APIs into seamless R packages
+1. Provide some _"tricks-of-the-trade"_ for how to effectively wrap stateful APIs into seamless R packages
 
-1. Provide some _"hands on"_ examples of how this looks and feels when it all comes together
+1. Provide _"hands on"_ examples of how this looks and feels when it all comes together
 
 # Brief history of OpenM++ {background-color='#ffe57b'}
 
 ## What is OpenM++
 
-> OpenM++ is an open-source platform to develop, use, and deploy micro-simulation or agent-based models. OpenM++ was designed to enable non-programmers to develop a range of models spanning simple to highly complex.
+> OpenM++ is an open-source platform to develop, use, and deploy micro-simulation or agent-based models. __OpenM++ was designed to enable non-programmers to develop a range of models spanning simple to highly complex.__
 
-- Primarily written in C++
+- Primarily written in C and C++
 
 - Can install and run on Mac, Windows, and Linux
 
 - Carefully designed and constructed to be the backward compatible _heir_ to __ModGen__
+
+## Why supercede ModGen?
+
+> Modgen was designed to facilitate microsimulation model programming. Its purpose is to remove as many obstacles to microsimulation model creation as possible.
+
+- ModGen was originally developed by Statistics Canada for its growing set of large and complex microsimulation models
+
+- Time had come for a transition to an open-source version, one that works in multiple environments (not only Windows), works smoothly with contemporary cloud services, and can exploit massive parallelism
+
+::: footer
+<https://www.statcan.gc.ca/en/microsimulation/modgen/new/introduction/introduction>
+:::
 
 ## What is OpenM++
 
@@ -122,16 +135,7 @@ library(htmltools)
 - We focus on the latter, microsim models written in OpenM++
 
 - OpenM++ is a __domain-specific language__ (DSL) that extends C++
-    + OpenM++ provides extensions that enable simple to complex microsimulation models to be written with about _one-fifth_ as many lines of code
-
-## Why supercede ModGen?
-
-- ModGen was originally developed by Statistics Canada for its growing set of large and complex microsimulation models
-
-- Time had come for a transition to an open-source version, one that works in multiple environments (not only Windows), works smoothly with contemporary cloud services and can exploit massive parallelism
-
-- [Introduction to Modgen](https://www.statcan.gc.ca/en/microsimulation/modgen/new/introduction/introduction)
-    + For the interested reader...
+    + Provides extensions that enable simple to complex microsimulation models to be written with about _one-fifth_ as many lines of code...
 
 ## Why OpenM++: General features
 
@@ -154,7 +158,8 @@ library(htmltools)
 - __Scalable complexity__: From simple 'toy' models to highly complex models
 
 - __Modularity__: New events and processes can be added to a model in a new module, often with little or no modification to existing modules.
-continuous or discrete time, or a mixture
+
+- Continuous or discrete time, or a mixture.
 
 ::: footer
 `r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
@@ -212,8 +217,6 @@ continuous or discrete time, or a mixture
 
 - __Replicate support__: All tables can have underlying replicate simulations to assess the uncertainty of any cell of any output table. Statistical measures of uncertainty are computed for all cells of all tables
 
-- __Automation__: Models can be controlled by scripts, _e.g._, Python or R
-
 ::: footer
 `r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
 :::
@@ -224,6 +227,8 @@ continuous or discrete time, or a mixture
 
 - __Dynamic run control__: A computational grid can process runs dynamically to enable whole-model estimation or calibration, with a controlling script reading run results and preparing new runs for execution
 
+- __Automation__: Models can be controlled by scripts, _e.g._, Python or R
+
 ::: footer
 `r fa('link')` <https://openmpp.org/wiki/openmpp-wiki.html>
 :::
@@ -231,8 +236,6 @@ continuous or discrete time, or a mixture
 ## OpenM++: Workshop focus
 
 - This workshop will primarily focus on the "analysts" perspective for what the benefits are of using OpenM++
-
-__OpenM++: Analyst features:__
 
 > Automation: Models can be controlled by scripts, e.g., Python or R.
 
@@ -242,7 +245,7 @@ __OpenM++: Analyst features:__
 
 - What are the benefits?
 
-## The setup
+## The Setup
 
 - You developed a microsimulation model in OpenM++. You can control the simulation using several (or many many) parameters and run the simulation to get output tables.
     + I come from the oncology world, so my models are cancer-focused, but yours might be finance, pensions, taxes, etc.
@@ -258,7 +261,7 @@ __OpenM++: Analyst features:__
 
 `r fa('link')` [API Documentation](https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API)
 
-- The OpenM++ API has over 100 endpoints for querying, setting, and deleting data
+- The OpenM++ API has over 100 _endpoints_ for querying, setting, and deleting data
 
 ```{r echo=FALSE, eval=FALSE}
 library(rvest)
@@ -279,14 +282,14 @@ read_html('https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API') |>
   )
 ```
 
-# Brief introduction to API {background-color='#ffe57b'}
+# Brief introduction to APIs {background-color='#ffe57b'}
 
 ## But, what is an API?
 
 - Stands for _"Application Programming Interface"_
     + Is that helpful?
     
-- In simple terms, it is a software for allowing two applications to _"communicate"_ with each other
+- In simple terms, it is a software for allowing two applications (client and server) to _"communicate"_ with each other
 
 - The communication occurs using a well-defined and structured language (_i.e._, send requests, receive responses)
 
@@ -321,6 +324,8 @@ read_html('https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API') |>
 - __DELETE:__ deletes a specified resource
 
 - __PATCH:__ partially updates a specified resource
+
+# Communicating with APIs from R {background-color='#ffe57b'}
 
 ## Building an API request in R
 
@@ -385,7 +390,7 @@ quotes[[2]]$q
 
 ## Simple R API: Motivational Quotes
 
-But even the previous example is a bit verbose for repeated use. Let's wrap this into a function.
+But even the previous example is a bit verbose for repeated use. Let's wrap this API request into a modular function.
 
 ```{r}
 get_quote <- function() {
@@ -400,21 +405,27 @@ get_quote <- function() {
 get_quote()
 ```
 
-# __Basic idea__: obfuscate the technical debt for making API requests in R into modular user-friendly functions {background-color='#ffa300'}
+# __Basic idea__: obfuscate the technical debt for making API requests in R into modular user-friendly functions {background-color='#ffe57b'}
+
+- Note: In the previous toy example, our API request:
+    + Didn't send any data with the request
+    + Didn't require user authentication
 
 ## A rich history of wrapping APIs...
 
 ![](assets/imports.png)
 
-# Quick Recap
+## Quick Recap
 
 - We have briefly learned what APIs are and how we communicate with them
 
 - We have learned how to wrap simple API requests into reusable R functions
 
-- Next, we will step up in complexity to learn some more advanced techniques for wrapping APIs (e.g., OpenM++) that allow more sophisticated communications
+- Next, we will step up in complexity to learn some more advanced techniques for wrapping APIs (e.g., OpenM++) that allows for more sophisticated conversations between the client and server
 
-# `r fa('r-project')` R Tricks-of-the-trade
+# `r fa('r-project')` R Tricks-of-the-trade {background-color='#ffe57b'}
+
+Not only do we want to communicate with the OpenM++ API, but we want our R session to always be up-to-date with the API database in __real time__
 
 ## Object-oriented (OO) approach
 
@@ -424,19 +435,9 @@ get_quote()
     
     + Generics and methods
     
-- Other languages (_e.g._, Python) use an encapsulated OO approach
+- Other languages (_e.g._, Python) use a more traditional (encapsulated) OO system
 
    + Objects ARE instances of a class definition and methods/attributes BELONG to classes
-
-## When to use S3? Basically always...
-
-> S3 is R’s first and simplest OO system. S3 is informal and ad hoc, but there is a certain elegance in its minimalism: you can’t take away any part of it and still have a useful OO system. __For these reasons, you should use it, unless you have a compelling reason to do otherwise.__
-
-- I think communicating with a stateful API connected to a database is a compelling reason
-
-::: footer
-<https://adv-r.hadley.nz/s3.html#introduction-12>
-:::
 
 ## S3 OOS
 
@@ -463,25 +464,25 @@ print(mtcars)
 print(lm(mpg ~ hp, mtcars))
 ```
 
+## When to use S3? Basically always...
+
+> S3 is R’s first and simplest OO system. S3 is informal and _ad hoc_, but there is a certain elegance in its minimalism: you can’t take away any part of it and still have a useful OO system. __For these reasons, you should use it, unless you have a compelling reason to do otherwise.__
+
+- I think communicating with an API connected to a database is a compelling reason
+
+::: footer
+<https://adv-r.hadley.nz/s3.html#introduction-12>
+:::
+
 ## R6 versus S3
 
-From Advanced R (2e) by Hadley Wickham
+From Advanced R (2e) by Hadley Wickham:
 
-- R6 is a profoundly different OO system from S3 and S4 because it is built on encapsulated objects, rather than generic functions. Additionally R6 objects have reference semantics, which means that they can be modified in place. These two big differences have a number of non-obvious consequences which we’ll explore here:
+- R6 is a profoundly different OO system from S3 and S4 because it is built on encapsulated objects, rather than generic functions. Additionally R6 objects have reference semantics, which means that they can be modified in place.
 
 - A generic is a regular function so it lives in the global namespace. An R6 method belongs to an object so it lives in a local namespace. This influences how we think about naming.
 
-::: footer
-<https://adv-r.hadley.nz/oo-tradeoffs.html#s3-r6>
-:::
-
-## R6 Encapsulated OOS
-
-From Advanced R (2e) by Hadley Wickham
-
 - R6’s reference semantics allow methods to simultaneously return a value and modify an object. This solves a painful problem called “threading state”.
-
-- You invoke an R6 method using `$`, which is an infix operator. If you set up your methods correctly you can use chains of method calls as an alternative to the pipe.
 
 ::: footer
 <https://adv-r.hadley.nz/oo-tradeoffs.html#s3-r6>
@@ -573,9 +574,9 @@ bucky$make_noise()
 
 ## Active Bindings
 
-> `makeActiveBinding()` installs `fun` in environment `env` so that getting the value of `sym` calls `fun` with no arguments, and assigning to `sym` calls `fun` with one argument, the value to be assigned. This allows the implementation of things like `C` variables linked to `R` variables and variables linked to databases
+From `?makeActiveBinding`
 
-- Active bindings are a first-class feature in R6, so we typically don't use `makeActiveBinding` directly...
+> `makeActiveBinding()` installs `fun` in environment `env` so that getting the value of `sym` calls `fun` with no arguments, and assigning to `sym` calls `fun` with one argument, the value to be assigned. This allows the implementation of things like `C` variables linked to `R` variables and variables linked to databases
 
 ## Active Bindings
 
@@ -583,7 +584,7 @@ bucky$make_noise()
 
 - Active bindings __LOOK__ like standard R objects in your global/local environment, but:
     + When you __ACCESS__ the objects value it actually runs a function in the background
-    + When you __ASSIGN__ to the object it runs a function with the assigned value as its only argument (_optionally_)
+    + When you __ASSIGN__ to the object it runs a function with the assigned value passed as its only argument (_optionally_)
 
 - __NOTE:__ Active bindings should be used sparingly, if at all. They are hard to reason about using standard R logic and should be avoided unless absolutely necessary
 
@@ -606,13 +607,15 @@ example_binding
 example_binding <- 100
 ```
 
+- Active bindings are a first-class feature in R6, so we typically don't use `makeActiveBinding` directly...
+
 ## How does this help us?
 
-- This feature is useful because our models/data live in a database and so it allows us to create bindings that always run functions in the background to communicate and stay _up-to-date_ with the server (i.e., OpenM++)
+- This feature is useful because our models/data live in a database so active bindings allows us to create objects that always run functions in the background to communicate and stay _up-to-date_ with the server (i.e., OpenM++)
 
 - If a user makes a change in the GUI, this needs to be reflected in REAL TIME in our active R session
 
-- Example: when a user tries to access an output table, a function is ran to retrieve the table in real-time to ensure it is accurate and up-to-date
+- Example: when a user tries to access a model/scenario/run, a function is ran to retrieve these in real-time to ensure they're accurate and up-to-date
 
 ```r
 # Real-time communication with API behind-the-scenes
@@ -628,13 +631,13 @@ Programmatic interface to OpenM++ and OncoSimX
 - When using `oncosimx`, you will interact with one (or many) of three specific classes
 
 - `OncoSimXModel`
-    + R6 Class def. for one of the OncoSimX models (e.g., All cancers)
+    + R6 class definition for one of the OncoSimX models
 
 - `OncoSimXWorkset`
-    + R6 Class def. for a set of input parameters (i.e., scenario)
+    + R6 class definition for a set of model input parameters
 
 - `OncoSimXModelRun`
-    + R6 Class def. for a model run
+    + R6 class definition for a model run
 
 ## Additional Functions
 
@@ -682,8 +685,6 @@ Each of these functions is an API request to OpenM++ wrapped into a friendly hel
     + `AgeBaselineForm1`: Risk for first union formation (by age)
     + `UnionDurationBaseline`: Risk for union dissolution (by time)
     + `SeparationDurationBaseline`: Risk for 2nd union formation
-  
-- Women are assumed to stay single after the dissolution of a second union...
 
 ::: footer
 <https://www.statcan.gc.ca/en/microsimulation/modgen/new/chap3/chap3-2>
