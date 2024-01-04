@@ -1,7 +1,7 @@
 # Matt Warkentin - Hands-on with R and OpenM++ for Microsimulation
 
 - Presenting author: Matt Warkentin (University of Calgary, Canada)
-- Authors: Matt Warkentin, Jean Yong, Michael Wolfson
+- Authors: Matt Warkentin, Michael Wolfson
 - Topic: Microsimulation modeling platforms
 
 OpenM++ is a powerful open-source platform for deploying microsimulation models at any scale. R is a powerful statistical language for data science, modelling, and data visualization. The harmony of R and OpenM++ provides a seamless interface to inspect, configure, and run microsimulation models and easily retrieve outputs/results for further processing, exploration, visualization, and reporting. In this workshop, we will teach you about the power of wrapping the OpenM++ API using the R language to provide a programmatic interface to microsimulation models with hands-on examples.
