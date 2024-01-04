@@ -11,7 +11,7 @@ get_scenarios('RiskPaths')
 
 get_model_runs('RiskPaths')
 
-## Load and inspect OncoSimX Model ----
+## Load and inspect RiskPaths Model ----
 
 riskpaths <- load_model('RiskPaths')
 
@@ -27,21 +27,21 @@ riskpaths$ModelScenarios
 
 riskpaths$ModelRuns
 
-## Load and inspect Default OncoSimX workset ----
+## Load and inspect Default RiskPaths workset ----
 
 rp_default_ws <- load_scenario('RiskPaths', 'Default')
 
 rp_default_ws$Parameters
 
-## Load and inspect Default OncoSimX workset ----
+## Load and inspect Default RiskPaths run ----
 
-rp_default_run <- load_scenario('RiskPaths', 'RiskPaths_Default')
+rp_default_run <- load_model_run('RiskPaths', 'RiskPaths_Default')
 
 rp_default_run$Parameters
 
 rp_default_run$Tables
 
-## Create and run new OncoSimX workset ----
+## Create and run new RiskPaths workset ----
 
 create_scenario('RiskPaths', 'MyNewScenario')
 
