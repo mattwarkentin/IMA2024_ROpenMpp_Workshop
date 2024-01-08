@@ -26,6 +26,7 @@ library(glue)
 library(here)
 library(fontawesome)
 library(htmltools)
+options(max.print = 10)
 ```
 
 ## Who are we? {.smaller}
@@ -104,6 +105,92 @@ library(htmltools)
 
 # Brief history of OpenM++ {background-color='#ffe57b'}
 
+## Brief history of ModGen (1)
+
+- Genesis mid 1980s – Canada had just finished a period of the _“Great Pension Debate”_, but analytical tools for pension policy scenarios were sorely lacking
+
+- Context: 
+    + Demographers in Canada were debating, using various multi-state life tables, how many marriages would end in divorce
+    + Stat Can was launching a trio of new longitudinal surveys and had just completed its first family history survey
+    + Stat Can had just released SPSD/M = Social Policy Simulation Database and Model, a cross-sectional tax/transfer microsimulation model
+
+## Brief history of ModGen (2)
+
+- __Result:__ Stat Can started developing dynamic microsimulation models, using annual time steps, as was conventional (building on Orcutt’s CORSIM)
+
+- __Problems:__ Too many events interacted (e.g., nuptiality & fertility & labour force & education transitions), so annual time step proved too limiting, and unable to handle sub-annual events such as cancers and heart attacks
+
+## Brief history of ModGen (3) {.smaller}
+
+- Fortunately, we had an extraordinary team of subject matter/statistical/data/computer science capable analysts
+
+- __Decision__: Create our own software environment designed to support writing complex dynamic microsimulation models
+    + By investing in an appropriately designed microsimulation modeling environment, we would save time and effort in the longer term
+    + Software was designed for continuous time modeling, with discrete events and an event queue (discrete time models feasible as special cases)
+    + Models could be either case-based or with interacting agents
+    + Using the latest compiler-compiler software technology
+
+- ModGen (“model generator”) was born
+
+## Transition to OpenM++
+
+- By 2010, it was clear than a successor to ModGen was needed...
+
+- Growing interest outside Stat Can in its microsimulation software technology, but ModGen with its __closed-source__ was constraining
+
+- Many developments in computing had also occurred, including: Cloud services, massive parallelism, different operating systems (not just Windows)
+
+- Steve Gribble was the master/guru architect of ModGen and is involved centrally in creating OpenM++
+
+## Transition to OpenM++ {.smaller}
+
+- Several research grants to Michael Wolfson enabled development of OpenM++ to begin
+    + __HealthPaths__: Building on the longitudinal National Population Health Survey, focus on health-adjusted life expectancy, determinants of health, and health inequalities
+    + __THIM (“theoretical health inequality model”)__: Small multi-level model to explore Canada-US differences in the relationship between income inequality and health
+    + __GMM (genetic mixing model)__: Genome Canada-funded pre-model for OncoSim0Breast to evaluate scenarios for transitioning from age-based to risk based breast cancer screening
+
+- Recently growing external uses of OpenM++
+
+## Role of Statistics Canada
+
+- Stat Can is currently supporting several major microsimulation models, previously written in ModGen, and all are currently written (i.e., simply recompiled) in OpenM++
+
+- Committed to continuing development and support of OpenM++ to sustain these models
+
+- Open to engaging with others using and or wanting to use OpenM++ as well as our open microsim models
+
+- Interested in engaging with others to build a broader community of users of OpenM++
+
+## StatCan Models in ModGen
+
+- __LifePaths__: For pension and retirement income policy
+
+- __POHEM__ (_“POpulation HEalth Model”_): Initially for cancer and heart disease, then arthritis and dementia
+
+- __XEcon__ (_“eXperimental Economy”_): Small theoretical model to explore the “new goods” problem in price indices
+
+- __OncoSim__: With the Canadian Partnership Against Cancer
+
+- __DEMOSIM__: Demographic projection model using full population census, including specialized foci on Aboriginals and ethnic identities
+
+- __Passages__: In partnership with Employment ministry
+
+## Select Other Models in ModGen/OpenM++
+
+- __microWELT__: Multi-country for aging and disability projections
+
+- __DYNAMIS-POP (for World Bank)__: Multi-country for populations, education and health
+
+- __MicroDEMS__: For Austria on immigration, education, labour force etc.
+
+- __DypEX__: Spanish pensions
+
+- __MicroCC__: US Community Colleges
+
+- __RiskPaths__: Simple teaching model focusing on fertility and nuptiality in Russia and Bulgaria
+
+# Features of OpenM++ {background-color='#ffe57b'}
+
 ## What is OpenM++
 
 > OpenM++ is an open-source platform to develop, use, and deploy micro-simulation or agent-based models. __OpenM++ was designed to enable non-programmers to develop a range of models spanning simple to highly complex.__
@@ -113,18 +200,6 @@ library(htmltools)
 - Can install and run on Mac, Windows, and Linux
 
 - Carefully designed and constructed to be the backward compatible _heir_ to __ModGen__
-
-## Why supercede ModGen?
-
-> Modgen was designed to facilitate microsimulation model programming. Its purpose is to remove as many obstacles to microsimulation model creation as possible.
-
-- ModGen was originally developed by Statistics Canada for its growing set of large and complex microsimulation models
-
-- Time had come for a transition to an open-source version, one that works in multiple environments (not only Windows), works smoothly with contemporary cloud services, and can exploit massive parallelism
-
-::: footer
-<https://www.statcan.gc.ca/en/microsimulation/modgen/new/introduction/introduction>
-:::
 
 ## What is OpenM++
 
@@ -297,7 +372,7 @@ read_html('https://openmpp.org/wiki/openmpp-wiki.html#Oms-web-service-API') |>
 
 ## API Schematic
 
-![](assets/diagram-what-is-an-api-postman-illustration.svg)
+![](assets/diagram-what-is-an-api-postman-illustration.svg){fig-align="center"}
 
 ::: footer
 <https://www.postman.com/what-is-an-api/>
